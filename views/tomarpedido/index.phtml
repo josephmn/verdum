@@ -1,0 +1,482 @@
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-left mb-0">
+                                <b><?php foreach ($_SESSION['submenus'] as $menu) { ?>
+                                        <?php if ($this->_controlador == $menu['v_link']) {
+                                            echo $menu['v_descripcion'];
+                                        } else {
+                                            '';
+                                        } ?>
+                                    <?php } ?>
+                                </b>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-body">
+
+            <section class="vertical-wizard">
+                    <div class="bs-stepper vertical vertical-wizard-example">
+                        <div class="bs-stepper-header">
+                            <div class="step crossed" data-target="#account-details-vertical">
+                                <button type="button" id="enruta" class="step-trigger" aria-selected="false">
+                                    <span class="bs-stepper-box">1</span>
+                                    <span class="bs-stepper-label">
+                                        <span class="bs-stepper-title">Clientes en ruta</span>
+                                        <span class="bs-stepper-subtitle">(Estan en ruta del dia)</span>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="step active" data-target="#personal-info-vertical">
+                                <button type="button" id="fueraruta" class="step-trigger" aria-selected="true">
+                                    <span class="bs-stepper-box">2</span>
+                                    <span class="bs-stepper-label">
+                                        <span class="bs-stepper-title">Clientes fuera de ruta</span>
+                                        <span class="bs-stepper-subtitle">(Estan en rutas de otro dia)</span>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <div class="step" data-target="#address-step-vertical">
+                                <button type="button" id="atendido" class="step-trigger" aria-selected="false">
+                                    <span class="bs-stepper-box">3</span>
+                                    <span class="bs-stepper-label">
+                                        <span class="bs-stepper-title">Clientes Atendidos</span>
+                                        <span class="bs-stepper-subtitle">(Listado de clientes Atendidos)</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bs-stepper-content">
+                            <div id="account-details-vertical" class="content dstepper-block">
+                                <div class="card-header bg-gradient-success" style="height:45px">
+                                    <h6 class="mb-0" style="color:#fff"><strong>Clientes en ruta</strong></h6>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-12">
+                                        <table id="tbruta" class="table table-bordered">
+                                            <thead class="thead-dark">
+                                                <tr class="text-center">
+                                                    <th>Documento</th>
+                                                    <th>RazonSocial</th>
+                                                    <th>Tipo</th>
+                                                    <th>Direccion</th>
+                                                    <th>Ultima/Visita</th>
+                                                    <th>IDEnvio</th>
+                                                    <th>Estado</th>
+                                                    <th>Vender</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php if (isset($this->clientesruta)) { ?>
+                                                    <?php foreach ($this->clientesruta as $fi) { ?>
+                                                        <tr>
+                                                            <td class="text-left"><span class="badge bg-<?php echo $fi['v_ColorEstado'] ?>"><?php echo $fi['v_codliente'] ?></span></td>
+                                                            <td class="text-left"><?php echo $fi['v_razonSocial'] ?></td>
+                                                            <td><?php echo $fi['v_clasificacion'] ?></td>
+                                                            <td><?php echo $fi['v_direccion'] ?></td>
+                                                            <td class="text-center"><?php echo $fi['v_fechaUltimaVisita'] ?></td>
+                                                            <td class="text-center"><?php echo $fi['v_ruta'] ?></td>
+                                                            <td class="text-center"><span class="badge bg-<?php echo $fi['v_ColorEstado'] ?>"><?php echo $fi['v_estado'] ?></span></td>
+                                                            <td class='text-center'>
+                                                                <a id='<?php echo $fi['v_codliente'] ?>' <?php $variable1 =  $fi['v_codliente'];
+                                                                                                            $variable2 =  $fi['v_razonSocial'];
+                                                                                                            $variable3 =  "EN RUTA" ;
+                                                                                                            $variable4 =  $fi['v_direccion'];
+                                                                                                            $variable5 =  $fi['v_ruta']?> href="<?php echo BASE_URL ?><?php echo $fi['v_Url'] ?>=<?php echo urlencode($variable1); ?>&variable2=<?php echo utf8_decode(urlencode($variable2)); ?>&variable3=<?php echo utf8_decode(urlencode($variable3)) ?>&variable4=<?php echo utf8_decode(urlencode($variable4)) ?>&variable5=<?php echo utf8_decode(urlencode($variable5)) ?>" class="btn btn-<?php echo $fi['v_btn1Boton'] ?>"><i class="fas fa-<?php echo $fi['v_btn1Imagen'] ?>"></i></a>
+                                                                <span class="badge bg-<?php echo $fi['v_ColorEstado'] ?>"><?php echo $fi['v_btn1Atencion'] ?></span>
+                                                            </td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div id="personal-info-vertical" class="content dstepper-block active">
+                                <div class="card-header bg-gradient-danger" style="height:45px">
+                                    <h5 class="mb-0 " style="color:#fff"><strong>Clientes fuera de ruta</strong></h5>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 col-12 mb-1">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="busqueda" placeholder="Ruc/Dni/Nombre" aria-describedby="button-addon2" autocomplete="off" />
+                                            <div class="input-group-append" id="button-addon2">
+                                                <button id="buscarcliente" class="btn btn-danger waves-effect waves-float waves-light" type="button"><i class="fas fa-search"></i> Buscar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="div-01"></div>
+                                <div class="row">
+                                    <div class="col-md-12 col-12">
+                                        <form class="form form-horizontal">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12">
+                                                            <table id="tbfruta" class="table table-bordered">
+                                                                <thead class="thead-dark">
+                                                                    <tr class="text-center">
+                                                                        <th>Documento</th>
+                                                                        <th>RazonSocial</th>
+                                                                        <th>Tipo</th>
+                                                                        <th>Direccion</th>
+                                                                        <th>Ultima/Visita</th>
+                                                                        <th>IDEnvio</th>
+                                                                        <th>Estado</th>
+                                                                        <th>Vender</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="address-step-vertical" class="content dstepper-block">
+                                <div class="card-header bg-gradient-primary" style="height:45px">
+                                    <h5 class="mb-0" style="color:#fff"><strong>Clientes Atendidos</strong></h5>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 col-12">
+                                        <form class="form form-horizontal">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12">
+                                                            <table id="tbAtnd" class="table table-bordered">
+                                                                <thead class="thead-dark">
+                                                                    <tr class="text-center">
+                                                                        <th>Documento</th>
+                                                                        <th>RazonSocial</th>
+                                                                        <th>Tipo</th>
+                                                                        <th>Direccion</th>
+                                                                        <th>Ultima/Visita</th>
+                                                                        <th>Ruta</th>
+                                                                        <th>IDEnvio</th>
+                                                                        <th>Ver</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section id="basic-horizontal-layouts">
+                    <!-- Statistics Card -->
+                    <div class="card card-statistics">
+                        <div class="card-header">
+                            <h4 class="card-title" style="color:#133337">Estadisticas de hoy (<?php echo $this->qtyventas[0]['v_fecha']; ?>)</h4>
+                            <!-- <h4><?php echo $this->qtyventas[0]['v_fecha']; ?></h4> -->
+                            <img src="../../../verdum/public/dist/img/illustration/badge.svg" class="congratulation-medal" alt="Medal Pic" />
+                        </div>
+                        <div class="card-body statistics-body">
+
+                            <div class="row">
+                                <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
+                                    <div class="media">
+                                        <div class="avatar bg-light-primary mr-2">
+                                            <div class="avatar-content">
+                                                <i data-feather="trending-up" class="avatar-icon"></i>
+                                            </div>
+                                        </div>
+                                        <div class="media-body my-auto">
+                                            <h4><?php echo $this->qtyventas[0]['dato']; ?></h4>
+                                            <p class="card-text font-small-3 mb-0" style="color:#133337">(#.) de Ventas</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
+                                    <div class="media">
+                                        <div class="avatar bg-light-info mr-2">
+                                            <div class="avatar-content">
+                                                <i data-feather="user" class="avatar-icon"></i>
+                                            </div>
+                                        </div>
+                                        <div class="media-body my-auto">
+                                            <h4><?php echo $this->nroclientes[0]['dato']; ?></h4>
+                                            <p class="card-text font-small-3 mb-0" style="color:#133337">(#.) de Clientes</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-sm-0">
+                                    <div class="media">
+                                        <div class="avatar bg-light-danger mr-2">
+                                            <div class="avatar-content">
+                                                <i data-feather="box" class="avatar-icon"></i>
+                                            </div>
+                                        </div>
+                                        <div class="media-body my-auto">
+                                            <h4><?php echo $this->totalprod[0]['dato']; ?></h4>
+                                            <p class="card-text font-small-3 mb-0" style="color:#133337">(#.) Productos</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-3 col-sm-6 col-12">
+                                    <div class="media">
+                                        <div class="avatar bg-light-success mr-2">
+                                            <div class="avatar-content">
+                                                <i data-feather="dollar-sign" class="avatar-icon"></i>
+                                            </div>
+                                        </div>
+                                        <div class="media-body my-auto">
+                                            <h4><?php echo $this->totalsoles[0]['dato']; ?></h4>
+                                            <p class="card-text font-small-3 mb-0" style="color:#133337">Total Ingresos</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Statistics Card -->
+                </section>
+
+
+               
+
+
+
+
+                <!-- <section class="modern-horizontal-wizard">
+                    <div class="bs-stepper wizard-modern modern-wizard-example">
+                        <div class="bs-stepper-header">
+
+                            <div class="step crossed " data-target="#account-details-modern">
+                                <button type="button" id="enruta" class="step-trigger" aria-selected="true">
+                                    <span class="bs-stepper-box">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text font-medium-3">
+                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="12" cy="7" r="4"></circle>
+                                        </svg>
+                                    </span>
+                                    <span class="bs-stepper-label">
+                                        <span class="bs-stepper-title">En ruta</span>
+                                        <span class="bs-stepper-subtitle">Cliente en ruta</span>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <div class="line">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right font-medium-2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                            <div class="step active" data-target="#personal-info-modern">
+                                <button type="button" id="fueraruta" class="step-trigger" aria-selected="false">
+                                    <span class="bs-stepper-box">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user font-medium-3">
+                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="12" cy="7" r="4"></circle>
+                                        </svg>
+                                    </span>
+                                    <span class="bs-stepper-label">
+                                        <span class="bs-stepper-title" style="color:#ea5455">Fuera de ruta</span>
+                                        <span class="bs-stepper-subtitle">Clientes fuera de ruta</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+
+
+
+                        <div class="bs-stepper-content">
+                            <div id="account-details-modern" class="content">
+                                <div class="row">
+                                    <div class="col-md-12 col-12">
+                                        <table id="table1" class="table table-bordered">
+                                            <thead class="thead-dark">
+                                                <tr class="text-center">
+                                                    <th>Documento</th>
+                                                    <th>RazonSocial</th>
+                                                    <th>Tipo</th>
+                                                    <th>Direccion</th>
+                                                    <th>Ultima/Visita</th>
+                                                    <th>Ruta</th>
+                                                    <th>Estado</th>
+                                                    <th>Vender</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php if (isset($this->clientesruta)) { ?>
+                                                    <?php foreach ($this->clientesruta as $fi) { ?>
+                                                        <tr>
+                                                            <td class="text-left"><span class="badge bg-<?php echo $fi['v_ColorEstado'] ?>"><?php echo $fi['v_codliente'] ?></span></td>
+                                                            <td class="text-left"><?php echo $fi['v_razonSocial'] ?></td>
+                                                            <td><?php echo $fi['v_clasificacion'] ?></td>
+                                                            <td><?php echo $fi['v_direccion'] ?></td>
+                                                            <td class="text-center"><?php echo $fi['v_fechaUltimaVisita'] ?></td>
+                                                            <td class="text-center"><?php echo $fi['v_ruta'] ?></td>
+                                                            <td class="text-center"><span class="badge bg-<?php echo $fi['v_ColorEstado'] ?>"><?php echo $fi['v_estado'] ?></span></td>
+                                                            <td class='text-center'>
+                                                                <a id='<?php echo $fi['v_codliente'] ?>' <?php $variable1 =  $fi['v_codliente'];
+                                                                                                            $variable2 =  $fi['v_razonSocial']; ?> name='<?php echo $fi['v_razonSocial'] ?>' href="<?php echo BASE_URL ?><?php echo $fi['v_Url'] ?>=<?php echo urlencode($variable1); ?>&variable2=<?php echo utf8_decode(urlencode($variable2)); ?>" class="btn btn-<?php echo $fi['v_btn1Boton'] ?>"><i class="fas fa-<?php echo $fi['v_btn1Imagen'] ?>"></i></a>
+                                                                <span class="badge bg-<?php echo $fi['v_ColorEstado'] ?>"><?php echo $fi['v_btn1Atencion'] ?></span>
+                                                            </td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="personal-info-modern" class="content active dstepper-block">
+                                <div class="content-header">
+                                    <h5 class="mb-0">Buscar cliente fuera de ruta</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-12 mb-1">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="busqueda" placeholder="Ruc/Dni/Nombre" aria-describedby="button-addon2" />
+                                            <div class="input-group-append" id="button-addon2">
+                                                <button id="buscarcliente" class="btn btn-outline-primary" type="button">Buscar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="div-01"></div>
+
+                                <div class="row">
+                                    <div class="col-md-12 col-12">
+                                        <form class="form form-horizontal">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12">
+                                                            <table id="example" class="table table-bordered">
+                                                                <thead class="thead-dark">
+                                                                    <tr class="text-center">
+                                                                        <th>Documento</th>
+                                                                        <th>RazonSocial</th>
+                                                                        <th>Tipo</th>
+                                                                        <th>Direccion</th>
+                                                                        <th>Ultima/Visita</th>
+                                                                        <th>Ruta</th>
+                                                                        <th>Estado</th>
+                                                                        <th>Vender</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </section> -->
+
+
+                <!-- <iframe width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=12ad0bbb-b040-4436-bb51-8060b0388190&autoAuth=true&ctid=2512bc76-0b42-4521-9a50-e72eae3db5ca&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXBhYXMtMS1zY3VzLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0LyJ9" frameborder="0" allowFullScreen="true"></iframe> -->
+
+
+
+                <!-- <section id="basic-horizontal-layouts">
+                    <div class="row">
+                        <div class="col-md-12 col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12 col-12">
+                                            <table id="table1" class="table table-bordered">
+                                                <thead class="thead-dark">
+                                                    <tr class="text-center">
+                                                        <th>Documento</th>
+                                                        <th>RazonSocial</th>
+                                                        <th>Tipo</th>
+                                                        <th>Direccion</th>
+                                                        <th>Ultima/Visita</th>
+                                                        <th>Ruta</th>
+                                                        <th>Estado</th>
+                                                        <th>Vender</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php if (isset($this->clientesruta)) { ?>
+                                                        <?php foreach ($this->clientesruta as $fi) { ?>
+                                                            <tr>
+                                                                <td class="text-left"><span class="badge bg-<?php echo $fi['v_ColorEstado'] ?>"><?php echo $fi['v_codliente'] ?></span></td>
+                                                                <td class="text-left"><?php echo $fi['v_razonSocial'] ?></td>
+                                                                <td><?php echo $fi['v_clasificacion'] ?></td>
+                                                                <td><?php echo $fi['v_direccion'] ?></td>
+                                                                <td class="text-center"><?php echo $fi['v_fechaUltimaVisita'] ?></td>
+                                                                <td class="text-center"><?php echo $fi['v_ruta'] ?></td>
+                                                                <td class="text-center"><span class="badge bg-<?php echo $fi['v_ColorEstado'] ?>"><?php echo $fi['v_estado'] ?></span></td>
+                                                                <td class='text-center'>
+                                                                    <a id='<?php echo $fi['v_codliente'] ?>' <?php $variable1 =  $fi['v_codliente'];
+                                                                                                                $variable2 =  $fi['v_razonSocial']; ?> name='<?php echo $fi['v_razonSocial'] ?>' href="<?php echo BASE_URL ?><?php echo $fi['v_Url'] ?>=<?php echo urlencode($variable1); ?>&variable2=<?php echo utf8_decode(urlencode($variable2)); ?>" class="btn btn-<?php echo $fi['v_btn1Boton'] ?>"><i class="fas fa-<?php echo $fi['v_btn1Imagen'] ?>"></i></a>
+                                                                    <span class="badge bg-<?php echo $fi['v_ColorEstado'] ?>"><?php echo $fi['v_btn1Atencion'] ?></span>
+                                                                </td>
+                                                            </tr>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section> -->
+
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->

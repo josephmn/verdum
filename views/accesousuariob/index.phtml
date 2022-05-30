@@ -1,0 +1,210 @@
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-left mb-0">
+                                <b>Configuracion a accesos de datos por usuario</b>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-body">
+                <section id="input-file-browser">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Filtros datos</h4>
+                                </div>
+                                <div class="card-body">
+
+                                    <input type="hidden" id="v_token" name="v_token" value="<?php echo $_SESSION['v_token'] ?>">
+
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label font-weight-bolder">Filtro(Tipo) <i data-feather='filter'></i></label>
+                                                <div class="form-group">
+                                                    <select id="tipo" class="select2 form-control form-control-lg">
+                                                        <?php foreach ($this->tipo as $tp) { ?>
+                                                            <option <?php echo $tp['v_default']; ?> value="<?php echo $tp['v_id_tipo']; ?>"><?php echo $tp['v_tipo']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label font-weight-bolder">Filtro(Faq1) <i data-feather='filter'></i></label>
+                                                <div class="form-group">
+                                                    <select id="Faq1" class="select2 form-control form-control-lg">
+                                                        <?php foreach ($this->Faq1 as $f1) { ?>
+                                                            <option <?php echo $f1['v_default']; ?> value="<?php echo $f1['v_id_tipo']; ?>"><?php echo $f1['v_tipo']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label font-weight-bolder">Filtro(Faq2) <i data-feather='filter'></i></label>
+                                                <div class="form-group">
+                                                    <select id="Faq2" class="select2 form-control form-control-lg">
+                                                        <?php foreach ($this->Faq2 as $f2) { ?>
+                                                            <option <?php echo $f2['v_default']; ?> value="<?php echo $f2['v_id_tipo']; ?>"><?php echo $f2['v_tipo']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-12">
+                                            <label class="form-label font-weight-bolder">Usuario</label>
+                                            <div class="input-group input-group-merge">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" style="background-color:#4CB942;"><i data-feather="user"></i></span>
+                                                </div>
+                                                <input type="text" id="username"  style="background-color:#f2fde4;" class="form-control" name="fname-icon" placeholder="Usuario" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-12">
+                                            <label class="form-label font-weight-bolder"></label>
+                                            <div class="input-group input-group-merge">
+                                                <button type="reset" id="filtrar" class="btn btn-relief-primary col-md-12"><i data-feather='filter'></i> Filtrar opciones</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-12">
+                                            <label class="form-label font-weight-bolder">Filtro(Tipo)<i data-feather='filter'></i></label>
+                                            <div class="input-group input-group-merge">
+                                                <input type="text" id="tipodato" class="form-control" name="fname-icon" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-12">
+                                            <label class="form-label font-weight-bolder">Fltro(Faq1)<i data-feather='filter'></i></label>
+                                            <div class="input-group input-group-merge">
+                                                <input type="text" id="faq1dato" class="form-control" name="fname-icon" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-12">
+                                            <label class="form-label font-weight-bolder">Filtro(Faq2)<i data-feather='filter'></i></label>
+                                            <div class="input-group input-group-merge">
+                                                <input type="text" id="faq2dato" class="form-control" name="fname-icon" />
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Basic Horizontal form layout section start -->
+                <section id="basic-horizontal-layouts">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Listado de tipos para restricciones</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form class="form form-horizontal">
+                                        <div class="row">
+
+                                            <div class="col-sm-9 offset-sm-4">
+                                                <button type="reset" id="AsignarDato" class="btn btn-relief-success"><i data-feather='save'></i> Asignar restriccion</button>
+                                                <!-- <button type="reset" class="btn btn-relief-secondary">Cancelar</button> -->
+                                            </div>
+
+                                            <div class="col-12">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12">
+                                                        <table id="example" class="table table-bordered">
+                                                            <thead class="thead-dark">
+                                                                <tr class="text-center">
+                                                                    <th>#</th>
+                                                                    <th>Tipo</th>
+                                                                    <th>Llave</th>
+                                                                    <th>Descripcion</th>
+                                                                    <th>Faq1</th>
+                                                                    <th>Faq2</th>
+                                                                    <th>Estado</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-sm-9 offset-sm-4">
+                                                <button type="reset" id="AsignarDato" class="btn btn-relief-success"><i data-feather='save'></i> Asignar</button>
+                                                <button type="reset" class="btn btn-relief-secondary">Cancelar</button>
+                                            </div> -->
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Datos restringidos</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form class="form form-horizontal">
+                                        <div class="row">
+
+                                            <div class="col-sm-9 offset-sm-3">
+                                                <button type="reset" id="QuitarDato" class="btn btn-relief-danger"><i data-feather='delete'></i> Quitar restriccion</button>
+                                                <!-- <button type="reset" class="btn btn-relief-secondary"><i data-feather='delete'></i> Cancelar</button> -->
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12">
+                                                        <table id="example1" class="table table-bordered">
+                                                            <thead class="thead-dark">
+                                                                <tr class="text-center">
+                                                                    <th>#</th>
+                                                                    <th>Tipo</th>
+                                                                    <th>Llave</th>
+                                                                    <th>Descripcion</th>
+                                                                    <th>Faq1</th>
+                                                                    <th>Faq2</th>
+                                                                    <th>Estado</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Basic Horizontal form layout section end -->
+            </div>
+
+        </div>
+    </div>
+    <!-- END: Content-->

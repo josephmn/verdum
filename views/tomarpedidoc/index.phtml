@@ -1,0 +1,113 @@
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <!-- <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-left mb-0">
+                                <b><?php foreach ($_SESSION['submenus'] as $menu) { ?>
+                                        <?php if ($this->_controlador == $menu['v_link']) {
+                                            echo $menu['v_descripcion'];
+                                        } else {
+                                            '';
+                                        } ?>
+                                    <?php } ?>
+                                </b>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="content-body" style="color:rgb(248, 248, 248);">
+                <section id="basic-horizontal-layouts" style="color:rgb(248, 248, 248);">
+                    <div class="row">
+                        <div class="col-md-6 col-12" style="color:rgb(248, 248, 248);">
+                            <div class="card bg-light-secondary text-white">
+
+                                <div class="card-header bg-gradient-info" style="height:50px;">
+                                    <h4 class="alert-heading" style="color:#133337"><i class="fas fa-edit"></i> REVISAR PEDIDO</h4>
+                                </div>
+
+                                <!-- <div class="card-body" style="color:#133337"> -->
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                    </div>
+                                </div>
+
+                                <input type="hidden" id="hora">
+
+                                <?php if (isset($this->ListadoVentaCliente)) { ?>
+                                    <?php foreach ($this->ListadoVentaCliente as $pc) { ?>
+                                        <div class="card card-transaction">
+                                            <div class="card-header">
+                                                <h4 class="card-title"> <strong>Venta Numero(<?php echo $pc['nu_correla'] ?>)</strong> </h4>
+                                                <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->
+                                                <div class="font-weight-bolder text-success"> <strong>Importe: S/ <?php echo $pc['nu_total'] ?></strong></div>
+                                                <button id="cancelar" type="button" class="btn btn-relief-danger  btn-sm"><i data-feather='x-octagon'></i><strong> Anular</strong></button>
+                                            </div>
+
+                                            <input type="hidden" id="nu_correla"  value="<?php echo $pc['nu_correla']  ?>">
+                                            <input type="hidden" id="ch_codclien"  value="<?php echo $pc['ch_codclien']  ?>">
+                                            <div class="card-body">
+                                                <div class="transaction-item bg-light-success">
+                                                    <div class="media">
+                                                        <div class="avatar bg-light-success rounded">
+                                                            <div class="avatar-content">
+                                                                <i data-feather="user-check" class="avatar-icon font-medium-3"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h6 class="transaction-title"><strong><?php echo $pc['ch_codclien'] ?></strong></h6>
+                                                            <small> <strong><?php echo $pc['vc_nomclien'] ?></strong></small>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div class="font-weight-bolder text-success"> S/ <?php echo $pc['nu_total'] ?></div> -->
+                                                </div>
+                                                
+
+                                                <?php if (isset($this->ListadoDetalleVentaCliente)) { ?>
+                                                    <?php foreach ($this->ListadoDetalleVentaCliente as $dt) { ?>
+
+                                                        <?php if ($pc['nu_correla'] == $dt['nu_correla']) { ?>
+                                                            <div class="transaction-item">
+                                                                <div class="media">
+                                                                    <div class="avatar bg-light-danger rounded">
+                                                                        <div class="avatar-content">
+                                                                            <i data-feather="box" class="avatar-icon font-medium-3"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="media-body">
+                                                                        <h6 class="transaction-title"><?php echo $dt['ch_codprod'] ?>-<?php echo $dt['vc_nomprod'] ?></h6>
+                                                                        <small><strong>Cantidad: </strong> </small>
+                                                                        <small><?php echo $dt['nu_unitotal'] ?></small>
+                                                                        <small><strong>Precio: </strong> </small>
+                                                                        <small><?php echo $dt['nu_precio'] ?></small>
+                                                                        <small><strong>Total: </strong> </small>
+                                                                        <small><?php echo $dt['nu_total'] ?></small>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- <button id="cancelar" type="button" class="btn btn-relief-warning  btn-sm"><i class="fas fa-ban"></i><strong> Anular</strong></button> -->
+                                                            </div>
+                                                        <?php } ?>
+
+
+                                                    <?php } ?>
+                                                <?php } ?>
+
+
+
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->

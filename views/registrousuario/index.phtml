@@ -1,0 +1,368 @@
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-left mb-0">
+                                <b><?php foreach ($_SESSION['submenus'] as $menu) { ?>
+                                        <?php if ($this->_controlador == $menu['v_link']) {
+                                            echo $menu['v_descripcion'];
+                                        } else {
+                                            '';
+                                        } ?>
+                                    <?php } ?>
+                                </b>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-body">
+                <section id="basic-horizontal-layouts">
+                    <div class="row">
+                        <div class="col-md-12 col-12">
+                            <div class="card">
+                                <!-- <div class="card-header">
+                                    <h4 class="card-title">Nuevo Usuario</h4>
+                                </div> -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12 col-12">
+                                            <div class="form-group">
+                                                <!-- <button id="btnagregar" type="button" class="btn btn-relief-success"><i data-feather='users'></i><span>&nbsp;&nbsp;Agregar nuevo usuario</span></button> -->
+                                                <button type="button"  id="btnagregar" class="btn btn-primary btn-sm btn-add-new waves-effect waves-float waves-light" data-repeater-create="">
+                                                <i data-feather='user-plus' width="30" height="30"  viewBox="0 0 24 24"></i>
+                                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus mr-25"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> -->
+                                                    <span class="align-middle"> Agregar Usuario</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-12">
+                                            <table id="example1" class="table table-bordered">
+                                                <thead class="thead-dark">
+                                                    <tr class="text-center">
+                                                        <th>#Id</th>
+                                                        <th>Nombre</th>
+                                                        <th>Apellidos</th>
+                                                        <th>Username</th>
+                                                        <th>Perfil</th>
+                                                        <th>Cargo</th>
+                                                        <th>CodVend</th>
+                                                        <th>Sede</th>
+                                                        <th>Fecha Registro</th>
+                                                        <th>Editar</th>
+                                                    </tr>
+                                                </thead>
+                                                <!-- <tbody>
+                                                </tbody> -->
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div> <!-- END: aqui-->
+        </div>
+    </div>
+    <!-- END: Content-->
+
+
+    <!-- MODAL EDITAR DATO-->
+    <div class="modal fade" id="modal-agregar" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header" style="background-color:rgb(97,194,80)">
+                    <h5 class="modal-title" style="height:12px; color:rgb(255,255,255)">AGREGAR NUEVO USUARIO&nbsp;</h5><b><span id="idtabla1"></span></b>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label font-weight-bolder">Username (Login)</label>
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i data-feather='layers'></i></span>
+                                </div>
+                                <input type="text" id="nombreusuario" style="background-color:#f2fde4;" class="form-control" name="fname-icon" placeholder="username" autocomplete="off" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label font-weight-bolder">Contraseña</label>
+                            <div class="form-group">
+                                <div class="input-group form-password-toggle input-group-merge">
+                                    <input id="contraseña" style="background-color:#f2fde4;" type="password" id="passwd" class="form-control" placeholder="contraseña" autocomplete="of" />
+                                    <div class="input-group-append">
+                                        <div class="input-group-text cursor-pointer">
+                                            <i data-feather="eye"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label font-weight-bolder">Nombre</label>
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i data-feather="user"></i></span>
+                                </div>
+                                <input type="text" id="nombre" class="form-control" name="fname-icon" placeholder="nombre" autocomplete="off" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label font-weight-bolder">Apellidos</label>
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i data-feather="user"></i></span>
+                                </div>
+                                <input type="text" id="apellidos" class="form-control" name="fname-icon" placeholder="apellidos" autocomplete="off" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label font-weight-bolder">Perfil</label>
+                            <div class="form-group">
+                                <select id="perfil" class="select2 form-control form-control-lg">
+                                    <?php foreach ($this->Perfil as $pr) { ?>
+                                        <option <?php echo $pr['v_default']; ?> value="<?php echo $pr['i_id']; ?>"><?php echo $pr['v_nombre']; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label font-weight-bolder">Cargo</label>
+                            <div class="form-group">
+                                <select id="cargo" class="select2 form-control form-control-lg">
+                                    <?php foreach ($this->listacargo as $cr) { ?>
+                                        <option <?php echo $cr['v_default']; ?> value="<?php echo $cr['i_id']; ?>"><?php echo $cr['v_carnombre']; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label font-weight-bolder">Codigo Vendedor (Opcional)</label>
+                            <div class="form-group">
+                                <select id="vendedor" class="select2 form-control form-control-lg">
+                                    <?php foreach ($this->listavendedor as $vn) { ?>
+                                        <option <?php echo $vn['v_default']; ?> value="<?php echo $vn['i_id']; ?>"><?php echo $vn['v_nombre']; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label font-weight-bolder">Sede</label>
+                            <div class="form-group">
+                                <select id="sede" class="select2 form-control form-control-lg">
+                                    <?php foreach ($this->listasede as $sd) { ?>
+                                        <option <?php echo $sd['v_default']; ?> value="<?php echo $sd['i_id']; ?>"><?php echo $sd['v_nombre']; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button id="btnregistrar" type="button" class="btn btn-success btn-block"><i class="fas fa-save"></i><b> Guardar</b></button>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="col-sm-6">
+                                <button id="btncancelar" type="button" class="btn btn-danger btn-block"> <i class="fas fa-ban"></i> <b> Cancelar</b></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL EDITAR DATO-->
+
+    <div class="modal fade" id="modal-editar" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:rgb(97,194,80)">
+                    <h5 class="modal-title" style="height:12px; color:rgb(255,255,255)">ACTUALIZAR DATOS USUARIO&nbsp;</h5><b><span id="idtabla1"></span></b>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label font-weight-bolder">Codigo</label>
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i data-feather="pocket"></i></span>
+                                </div>
+                                <input type="text" id="idupdate" class="form-control" name="fname-icon" placeholder="id" autocomplete="off" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label font-weight-bolder">Nombre</label>
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i data-feather="user"></i></span>
+                                </div>
+                                <input type="text" id="nombreupdate" class="form-control" name="fname-icon" placeholder="nombre" autocomplete="off" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label font-weight-bolder">Apellidos</label>
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i data-feather="user"></i></span>
+                                </div>
+                                <input type="text" id="apellidosupdate" class="form-control" name="fname-icon" placeholder="apellidos" autocomplete="off" />
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label font-weight-bolder">Perfil</label>
+                            <div class="form-group">
+                                <select id="perfilupdate" class="select2 form-control form-control-lg">
+                                    <?php foreach ($this->Perfil as $pr) { ?>
+                                        <option <?php echo $pr['v_default']; ?> value="<?php echo $pr['i_id']; ?>"><?php echo $pr['v_nombre']; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label font-weight-bolder">Cargo</label>
+                            <div class="form-group">
+                                <select id="cargoupdate" class="select2 form-control form-control-lg">
+                                    <?php foreach ($this->listacargo as $cr) { ?>
+                                        <option <?php echo $cr['v_default']; ?> value="<?php echo $cr['i_id']; ?>"><?php echo $cr['v_carnombre']; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label font-weight-bolder">Username (Login)</label>
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i data-feather='layers'></i></span>
+                                </div>
+                                <input type="text" id="nombreusuarioupdate" style="background-color:#f2fde4;" class="form-control" name="fname-icon" placeholder="username" autocomplete="off" />
+                            </div>
+                        </div>
+                    </div>
+                     -->
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <div class="custom-control custom-switch custom-switch-primary">
+                                <p class="mb-50">Activar para cambiar la contraseña</p>
+                                <input type="checkbox" class="custom-control-input" id="customSwitch10" checked />
+                                <label class="custom-control-label" for="customSwitch10">
+                                    <span class="switch-icon-left"><i data-feather="check"></i></span>
+                                    <span class="switch-icon-right"><i data-feather="x"></i></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label font-weight-bolder">Nueva contraseña</label>
+                            <div class="form-group">
+                                <div class="input-group form-password-toggle input-group-merge">
+                                    <input id="contraseñaupdate" style="background-color:#f2fde4;" type="password" id="passwd" class="form-control" placeholder="contraseña" autocomplete="of" />
+                                    <div class="input-group-append">
+                                        <div class="input-group-text cursor-pointer">
+                                            <i data-feather="eye"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label font-weight-bolder">Codigo Vendedor (Opcional)</label>
+                            <div class="form-group">
+                                <select id="vendedorupdate" class="select2 form-control form-control-lg">
+                                    <?php foreach ($this->listavendedor as $vn) { ?>
+                                        <option <?php echo $vn['v_default']; ?> value="<?php echo $vn['i_id']; ?>"><?php echo $vn['v_nombre']; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label font-weight-bolder">Sede</label>
+                            <div class="form-group">
+                                <select id="sedeupdate" class="select2 form-control form-control-lg">
+                                    <?php foreach ($this->listasede as $sd) { ?>
+                                        <option <?php echo $sd['v_default']; ?> value="<?php echo $sd['i_id']; ?>"><?php echo $sd['v_nombre']; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button id="btnactualizar" type="button" class="btn btn-success btn-block"><i class="fas fa-save"></i> <b>Guardar</b></button>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="col-sm-6">
+                                <button id="btncancelupdate" type="button" class="btn btn-danger btn-block"><i class="fas fa-ban"></i> <b>Cancelar</b></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>

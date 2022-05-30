@@ -1,0 +1,300 @@
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <!-- <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-left mb-0">
+                                <b><?php foreach ($_SESSION['submenus'] as $menu) { ?>
+                                        <?php if ($this->_controlador == $menu['v_link']) {
+                                            echo $menu['v_descripcion'];
+                                        } else {
+                                            '';
+                                        } ?>
+                                    <?php } ?>
+                                </b>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="content-body">
+                <section id="basic-horizontal-layouts">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="card">
+
+                                <div class="card-header bg-gradient-success" style="height:50px;">
+                                    <h4 class="alert-heading" style="color:#133337"><i class="fas fa-cart-plus"></i> NUEVO PEDIDO</h4>
+                                </div>
+
+                                <div class="card-body">
+
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Documento cliente</label>
+                                            <div class="input-group input-group-merge">
+                                                <div class=" input-group-prepend">
+                                                    <span class="input-group-text"><i data-feather="user"></i></span>
+                                                </div>
+                                                <input type="text" id="documento" style="color:rgb(68,120,46)" class="alert-success form-control" name="fname-icon" placeholder="documento cliente" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Nombre cliente</label>
+                                            <div class="input-group input-group-merge">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i data-feather="user"></i></span>
+                                                </div>
+                                                <input type="text" id="nombre" style="color:rgb(68,120,46)" class="alert-success form-control" name="fname-icon" placeholder="nombre cliente" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <input type="hidden" id="hora">
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                            <!-- <label class="form-label font-weight-bolder"><Datag>Dirección:</Datag></label> -->
+                                            <!-- <select id="direccion" class="select2 form-control form-control-lg">
+                                                <?php foreach ($this->listadodireccion as $dir) { ?>
+                                                    <option value="<?php echo $dir['v_codliente']; ?>"><?php echo $dir['v_direccion']; ?></option>
+                                                <?php } ?>
+                                            </select> -->
+                                            <label class="form-label font-weight-bolder">Dirección:</label>
+                                            <div class="input-group input-group-merge">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i data-feather='truck'></i></span>
+                                                </div>
+                                                <input type="text" id="direccion" style="color:rgb(68,120,46)" class="alert-success form-control" name="fname-icon" placeholder="direccion cliente" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                            <label class="form-label font-weight-bolder">Producto:</label>
+                                            <select id="codproducto" class="select2 form-control form-control-lg">
+                                                <?php foreach ($this->listadoproducto as $lp) { ?>
+                                                    <option value="<?php echo $lp['v_codprod']; ?>"><?php echo $lp['v_productoserach']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <input type="hidden" id="unidad">
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div id="mensaje">
+                                            </div>
+                                        </div>
+
+                                        <!-- btn btn-relief bg-gradient-primary -->
+                                        <div class="col-md-4">
+                                            <div class="form-group" style="height:30px;">
+                                                <button type="submit" id="btn_cargar" style="height:35px;" class="btn btn-relief-primary bg-gradient-primary  btn-block"><i class="fas fa-plus-circle"></i> Agregar Cantidad</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="div-01"></div>
+                                    <!-- <label class="form-label font-weight-bolder"  style="color:rgb(237,56,10)" ><Strong>Detalle de venta</strong></label> -->               
+                                    <div class="row">
+                                   
+                                        <div class="col-12">
+                                            <div class="form-group row">
+                                                <div class="col-md-12">
+                                                <H6  class="text-center" style="color:rgb(237,56,10)"></H6>
+                                                <H6  class="text-center" style="color:rgb(237,56,10)"><strong>  Detalle de venta<strong></strong> </H6>
+                                                    <table id="mytable" border="10" class="table-responsive nowrap table-bordered">                                                             
+                                                        <tr class="text-center">
+                                                            <th width="25%" bgcolor="404040"><b style="color:#ffffff">Item</b></th>
+                                                            <th width="25%" bgcolor="404040"><b style="color:#ffffff">Precio</b></th>
+                                                            <th width="30%" bgcolor="404040"><b style="color:#ffffff">Cant</b></th>
+                                                            <th width="30%" bgcolor="404040"><b style="color:#ffffff">Total.<i class="fas fa-dollar-sign"></i></b></th>
+                                                            <th width="35%" bgcolor="404040" style="color:rgb(255,0,0);"><b style="color:#ffffff"><i class="far fa-trash-alt"></i></b></th>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label id="resumentableTotal" style="color:rgb(27,13,136)" class="form-label font-weight-bolder text-center"></label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label id="resumentableImporte" style="color:rgb(27,13,136)" class="form-label font-weight-bolder text-left"></label>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div id="div-00"></div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-3" style="height:10px;">
+                                        </div>
+
+                                        <div class="col-md-3" style="height:50px;">
+                                            <h6 class="text-center" style="color:rgb(0, 181, 26);height:3px"></h6>
+                                            <div class="form-group">
+                                                <button id="procesar" type="button" style="height:40px" class="btn btn-relief-success bg-gradient-success waves-effect waves-float waves-light btn-block btn-sm" type="button"> <i data-feather='save'></i> <strong>Guardar</strong> </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3" style="height:50px;">
+                                            <h6 class="text-center" style="color:rgb(0, 181, 26);height:3px">
+                                            </h6>
+
+                                            <div class="form-group">
+                                                <button id="cancelar" type="button" style="height:40px" class="btn btn-relief-danger bg-darken-2 colors-container rounded text-white btn-block btn-sm"><i data-feather='delete'></i><strong> Cancelar</strong></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3" style="height:50px;">
+                                            <h6 class="text-center" style="color:rgb(179, 27, 0);height:3px">
+                                            </h6>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+
+
+    <!-- DE AQUI EMPIEZA MODAL PARA DATOS DE PRODUCTOS -->
+    <div class="modal fade text-left modal-secondary" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <form id="myForm" method="post">
+                    <div class="modal-header  bg-gradient-success">
+                        <label id="descripcion" style="color:rgb(179, 27, 0)" class="form-label font-weight-bolder text-center"></label>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label class="form-label font-weight-bolder">Stock Actual</label>
+                                <div class="input-group input-group-merge" style="height:20px">
+                                    <div class="input-group-prepend">
+                                        <span style="height:23px; font-size: 15px;" class="input-group-text"><i class="fas fa-warehouse"></i></span>
+                                    </div>
+                                    <input type="number" id="stock" style="height:23px; font-size: 15px;" class="form-control" id="itemquantity" aria-describedby="itemquantity" placeholder="0" readonly="readonly" />
+                                </div>
+                            </div>
+
+                            <input type="hidden" id="unidad">
+
+                            <div class="form-group col-md-6">
+                                <label class="form-label font-weight-bolder">Unidad medida</label>
+                                <div class="input-group input-group-merge" style="height:19px">
+                                    <div class="input-group-prepend">
+                                        <span style="height:23px; font-size: 15px;" class="input-group-text"><i class="fas fa-balance-scale-right"></i></span>
+                                    </div>
+                                    <input type="text" id="und" style="height:23px; font-size: 15px;" class="form-control" name="fname-icon" placeholder="" readonly="readonly" />
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="form-label font-weight-bolder">Ingresar cantidad</label>
+                                <div class="input-group input-group-merge" style="height:19px">
+                                    <div class="input-group-prepend">
+                                        <span style="height:23px; font-size: 15px;" class="input-group-text"><i class="fas fa-cart-arrow-down"></i></span>
+                                    </div>
+                                    <input type="number" id="cantidad" style="height:23px; font-size: 15px;color:rgb(0,0,0)" class="form-control" id="itemquantity" aria-describedby="itemquantity" placeholder="0" autocomplete="off" />
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="form-label font-weight-bolder">Precio</label>
+                                <div class="input-group input-group-merge" style="height:19px">
+                                    <div class="input-group-prepend">
+                                        <span style="height:23px; font-size: 15px;" class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                                    </div>
+                                    <input type="number" id="precio" style="height:23px; font-size: 15px;color:rgb(0,0,0)" class="form-control" id="itemquantity" aria-describedby="itemquantity" placeholder="0" readonly="readonly" />
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="form-label font-weight-bolder">Importe total</label>
+                                <div class="input-group input-group-merge" style="height:19px">
+                                    <div class="input-group-prepend">
+                                        <span style="height:23px; font-size: 15px;" class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                                    </div>
+                                    <input type="number" id="importe" style="height:23px; font-size: 15px;color:rgb(0,0,0)" class="form-control" id="itemquantity" aria-describedby="itemquantity" placeholder="0" readonly="readonly" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label class="form-label font-weight-bolder text-center" style="color:rgb(58,102,39)">PRECIOS(S/)</label>
+                                <table id="tabla" cellpadding="2" cellspacing="4" border="1" class="table-responsive nowrap table-bordered">
+                                    <thead id="th1">
+                                    </thead>
+                                    <tbody id="tb1">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button id="calcular" type="button" class="btn btn-relief bg-gradient-primary"><i data-feather='percent'></i> Calcular</button>
+                        <button id="insertar" type="button" class="btn btn-relief bg-gradient-success"><i data-feather='shopping-cart'></i> Añadir</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade text-left" id="modalvalida" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160" aria-hidden="true">
+    <!-- <div class="modal fade" id="modalvalida" data-backdrop="static" tabindex="-1" style="display: block;" aria-modal="true" role="dialog" aria-hidden="true"> -->
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-gradient-warning">
+                    <h5 class="modal-title">VALIDAR CLIENTE CON SUNAT </h5>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label id="cod" style="color:rgb(179, 27, 0)" class="form-label font-weight-bolder text-center"></label>
+                        <h5 class="modal-title">Cliente no se encuentra validado con Sunat(Para pasar pedido debe estar validado).
+                            (Puede hacerlo desde el boton Aceptar)</h5>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button id="btn_validar" type="button" class="btn btn-success btn-block waves-effect waves-float waves-light"><b>Aceptar</b></button>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="col-sm-6">
+                                <button id="btn_novalidar" type="button" class="btn btn-danger btn-block waves-effect waves-float waves-light"><b>Cancelar</b></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>

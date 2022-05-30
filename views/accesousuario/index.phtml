@@ -1,0 +1,156 @@
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-left mb-0">
+                                <b><?php foreach ($_SESSION['submenus'] as $menu) { ?>
+                                        <?php if ($this->_controlador == $menu['v_link']) {
+                                            echo $menu['v_descripcion'];
+                                        } else {
+                                            '';
+                                        } ?>
+                                    <?php } ?>
+                                </b>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="content-body">
+<!-- 
+                <section id="input-file-browser">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Filtros datos</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label font-weight-bolder">Filtro(Tipo) <i data-feather='filter'></i></label>
+                                                <div class="form-group">
+                                                    <select id="tipo" class="select2 form-control form-control-lg">
+                                                        <?php foreach ($this->tipo as $tp) { ?>
+                                                            <option <?php echo $tp['v_default']; ?> value="<?php echo $tp['v_id_tipo']; ?>"><?php echo $tp['v_tipo']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-lg-3 col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label font-weight-bolder">Filtro(Faq1) <i data-feather='filter'></i></label>
+                                                <div class="form-group">
+                                                    <select id="Faq1" class="select2 form-control form-control-lg">
+                                                        <?php foreach ($this->Faq1 as $f1) { ?>
+                                                            <option <?php echo $f1['v_default']; ?> value="<?php echo $f1['v_id_tipo']; ?>"><?php echo $f1['v_tipo']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-lg-3 col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label font-weight-bolder">Filtro(Faq2) <i data-feather='filter'></i></label>
+                                                <div class="form-group">
+                                                    <select id="Faq2" class="select2 form-control form-control-lg">
+                                                        <?php foreach ($this->Faq2 as $f2) { ?>
+                                                            <option <?php echo $f2['v_default']; ?> value="<?php echo $f2['v_id_tipo']; ?>"><?php echo $f2['v_tipo']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-12">
+                                            <label class="form-label font-weight-bolder">Usuario</label>
+                                            <div class="input-group input-group-merge">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" style="background-color:#4CB942;"><i data-feather="user"></i></span>
+                                                </div>
+                                                <input type="text" id="username" class="form-control" name="fname-icon" placeholder="Usuario" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section> -->
+
+
+
+
+                <section id="basic-horizontal-layouts">
+                    <div class="row">
+                        <div class="col-md-12 col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12 col-12">
+                                            <table id="tbusuarios" class="table table-bordered">
+                                                <thead class="thead-dark">
+                                                    <tr class="text-center">
+                                                        <th>Id</th>
+                                                        <th>Nombre</th>
+                                                        <th>Apellidos</th>
+                                                        <th>Username</th>
+                                                        <th>Perfil</th>
+                                                        <th>Fecha Registro</th>
+                                                        <th>Cargo</th>
+                                                        <th>Sede</th>
+                                                        <th>codvend</th>
+                                                        <th>Acceso</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php if (isset($this->listauseracceso)) { ?>
+                                                        <?php foreach ($this->listauseracceso as $ac) { ?>
+                                                            <tr>
+                                                                <td class="text-center"><?php echo $ac['i_id'] ?></td>
+                                                                <td class="text-left"><?php echo $ac['v_nombres'] ?></td>
+                                                                <td class="text-left"><?php echo $ac['v_apellidos'] ?></td>
+                                                                <td class="text-center"><?php echo $ac['v_correo'] ?></td>
+                                                                <td class="text-center"><span class="badge bg-<?php echo $ac['ColorPerfil'] ?>"><?php echo $ac['v_perfil'] ?></td>
+                                                                <td class="text-center"><?php echo $ac['d_fecharegistro'] ?></td>
+                                                                <td class="text-center"><?php echo $ac['carnombre'] ?></td>
+                                                                <td class="text-center"><?php echo $ac['v_sede'] ?></td>
+                                                                <td class="text-center"><?php echo $ac['v_codvend'] ?></td>
+
+                                                                <td class='text-center'>
+                                                                    <a id='<?php echo $ac['v_correo'] ?>' <?php $variable1 =  $ac['v_correo'] ?> <?php $variable2 =  $ac['v_nombres'] ?><?php $variable3 =  $ac['v_apellidos'] ?> href="<?php echo BASE_URL ?><?php echo $ac['v_url'] ?>=<?php echo urlencode($variable1); ?>&variable2=<?php echo utf8_decode(urlencode($variable2) . '+' . urlencode($variable3)); ?>" class="btn btn-<?php echo $ac['v_btn1'] ?>"><i class="fas fa-<?php echo $ac['v_btn1Imagen'] ?>"></i></a>
+                                                                    <span class="badge bg-<?php echo $ac['v_btn1Color'] ?>"><?php echo $ac['v_btn1Nombre'] ?></span>
+
+                                                                </td>
+                                                            </tr>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div> <!-- END: aqui-->
+
+        </div>
+    </div>
+    <!-- END: Content-->

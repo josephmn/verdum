@@ -1,0 +1,119 @@
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <!-- <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-left mb-0">
+                                <b><?php foreach ($_SESSION['submenus'] as $menu) { ?>
+                                        <?php if ($this->_controlador == $menu['v_link']) {
+                                            echo $menu['v_descripcion'];
+                                        } else {
+                                            '';
+                                        } ?>
+                                    <?php } ?>
+                                </b>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="content-body" style="color:rgb(248, 248, 248);">
+                <section id="basic-horizontal-layouts" style="color:rgb(248, 248, 248);">
+                    <div class="row">
+                        <div class="col-md-12 col-12" style="color:rgb(248, 248, 248);">
+                            <div class="card bg-light-secondary text-white">
+
+                                <div class="card-header bg-gradient-success" style="height:50px;">
+                                    <h4 class="alert-heading" style="color:#133337"><i class="fas fa-chart-pie"></i> <strong>ESTADISTICAS</strong> </h4>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                    </div>
+                                </div>
+
+                                <input type="hidden" id="hora">
+
+                                <?php if (isset($this->ListadoVentaSupervisor)) { ?>
+                                    <?php foreach ($this->ListadoVentaSupervisor as $vn) { ?>
+                                        <div class="card card-statistics">
+                                            <div class="card-header">
+                                                <h4 class="card-title"><i class="fas fa-user-tie"></i>  <strong><?php echo $vn['ch_CodVende'] ?>-<?php echo $vn['vc_nomvende'] ?></strong> </h4>
+                                                <div class="d-flex align-items-center">
+                                                    <p class="card-text mr-25 mb-0" style="color:#133337">Datos de fecha (<?php echo $vn['v_fecha'] ?>)</p>
+                                                </div>
+                                            </div>
+                                            <div class="card-body statistics-body">
+                                                <div class="row">
+                                                    <div class="col-md-3 col-sm-6 col-12 mb-2 mb-md-0">
+                                                        <div class="media">
+                                                            <div class="avatar bg-light-primary mr-2">
+                                                                <div class="avatar-content">
+                                                                    <i data-feather="trending-up" class="avatar-icon"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="media-body my-auto">
+                                                                <h4 class="font-weight-bolder mb-0"><?php echo $vn['Numero_ventas'] ?></h4>
+                                                                <p class="card-text font-small-3 mb-0" style="color:#133337">(#.) de Ventas</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-6 col-12 mb-2 mb-md-0">
+                                                        <div class="media">
+                                                            <div class="avatar bg-light-info mr-2">
+                                                                <div class="avatar-content">
+                                                                    <i data-feather="user" class="avatar-icon"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="media-body my-auto">
+                                                                <h4 class="font-weight-bolder mb-0"><?php echo $vn['Cantidad_clientes'] ?></h4>
+                                                                <p class="card-text font-small-3 mb-0" style="color:#133337">(#.) de Clientes</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-6 col-12 mb-2 mb-sm-0">
+                                                        <div class="media">
+                                                            <div class="avatar bg-light-danger mr-2">
+                                                                <div class="avatar-content">
+                                                                    <i data-feather="box" class="avatar-icon"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="media-body my-auto">
+                                                                <h4 class="font-weight-bolder mb-0"><?php echo $vn['Cantidad_productos'] ?></h4>
+                                                                <p class="card-text font-small-3 mb-0" style="color:#133337">(#.) de Productos</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-6 col-12">
+                                                        <div class="media">
+                                                            <div class="avatar bg-light-success mr-2">
+                                                                <div class="avatar-content">
+                                                                    <i data-feather="dollar-sign" class="avatar-icon"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="media-body my-auto">
+                                                                <h4 class="font-weight-bolder mb-0"><?php echo $vn['Monto_Soles'] ?></h4>
+                                                                <p class="card-text font-small-3 mb-0" style="color:#133337">(#.) Ingresos</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- </div> -->
+                                    <?php } ?>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->

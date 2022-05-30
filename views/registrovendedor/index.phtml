@@ -1,0 +1,137 @@
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <!-- <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-left mb-0">
+                                <b><?php foreach ($_SESSION['submenus'] as $menu) { ?>
+                                        <?php if ($this->_controlador == $menu['v_link']) {
+                                            echo $menu['v_descripcion'];
+                                        } else {
+                                            '';
+                                        } ?>
+                                    <?php } ?>
+                                </b>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="content-body">               
+                <section id="basic-horizontal-layouts">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header ">
+                                    <h4 class="card-title alert alert-success">Acciones</h4>
+                                </div>
+                                <div class="card-body">
+                                    <!-- <p>
+                                        <code>.{valid/invalid}-feedback</code> classes for <code>.{valid/invalid}-tooltip</code> classes to display
+                                        validation feedback in a styled tooltip.
+                                    </p> -->
+                                    <form class="needs-validation was-validated" novalidate="">
+                                        <div class="form-row">
+                                            <div class="col-md-2 col-6 mb-1">
+                                                <button id="btnagregar" class="btn btn-primary waves-effect waves-float waves-light" type="button">Agregar Nuevo&nbsp;
+                                                    <i class="fas fa-user-plus fa-beat"></i>
+                                                </button>
+                                            </div>
+                                            <div class="col-md-2 col-6 mb-1">
+                                                <button id="btnperfil" class="btn btn-warning waves-effect waves-float waves-light" type="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Perfiles&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="fas fa-address-card fa-beat"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-12 col-12">
+                            <div class="card">
+                                <!-- <div class="card-header">
+                                    <h4 class="card-title">Acciones</h4>
+                                </div> -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <!-- <div class="col-md-12 col-12">
+                                            <div class="form-group">
+                                                <button id="btnagregar" type="button" class="btn btn-relief-primary"><i data-feather='users'></i><span>&nbsp;&nbsp;Agregar Nuevo</span></button>
+                                            </div>
+                                        </div> -->
+
+                                        <div class="col-xs-12 col-sm-12 col-12">
+                                            <table id="tbvendedor" class="table table-bordered">
+                                                <thead class="thead-dark">
+                                                    <tr class="text-center">
+                                                        <th>Nombre</th>
+                                                        <th>Dni</th>
+                                                        <th>CodSup</th>
+                                                        <th>Supervisor</th>
+                                                        <th>Sede</th>
+                                                        <th>Zona Venta</th>
+                                                        <th>Cargo</th>
+                                                        <th><i data-feather='settings'></i> Config</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php if (isset($this->ListadoPersonalVendedor)) { ?>
+                                                        <?php foreach ($this->ListadoPersonalVendedor as $ac) { ?>
+                                                            <tr>
+                                                                <td class="text-left">
+                                                                    <div class="col-md-12 col-sm-2 col-12 mb-2 mb-md-0">
+                                                                        <div class="media">
+                                                                            <div class="avatar bg-light-danger mr-0">
+                                                                                <div class="avatar-content">
+                                                                                    <i data-feather="user" stroke-width="3" class="avatar-icon"></i>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="media-body my-auto">
+                                                                                <h5 class="font-weight-bolder mb-0"> &nbsp; <?php echo $ac['v_codvend'] ?> - <?php echo $ac['v_name'] ?></h5>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="text-center"><strong><?php echo $ac['v_dni'] ?></strong> </td>
+                                                                <td class="text-left"><?php echo $ac['v_codsup'] ?></td>
+                                                                <td class="text-left"><?php echo $ac['v_namesup'] ?></td>
+                                                                <td class="text-center"><?php echo $ac['v_sede'] ?></td>
+                                                                <td class="text-center"><?php echo $ac['v_zonaventa'] ?></td>
+                                                                <td class="text-left">
+                                                                    <span class="text-truncate align-middle"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-database font-medium-3 text-success mr-50">
+                                                                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                                                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                                                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                                                                        </svg></span>
+                                                                    <?php echo $ac['v_cargo'] ?>
+                                                                </td>
+                                                                <td class='text-center'>
+                                                                    <a id='<?php echo $ac['v_codvend'] ?>' <?php $variable1 =  $ac['v_codvend'] ?> href="<?php echo BASE_URL ?><?php echo $ac['v_url'] ?>=<?php echo urlencode($variable1) ?>" class="btn btn-<?php echo $ac['v_btn1'] ?>"><i class="fas fa-<?php echo $ac['v_btn1Imagen'] ?>"></i></a>
+                                                                </td>
+
+                                                            </tr>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->

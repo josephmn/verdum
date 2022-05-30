@@ -1,0 +1,243 @@
+<!-- BEGIN: Content-->
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <!-- <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-left mb-0">
+                                <b><?php foreach ($_SESSION['submenus'] as $menu) { ?>
+                                        <?php if ($this->_controlador == $menu['v_link']) {
+                                            echo $menu['v_descripcion'];
+                                        } else {
+                                            '';
+                                        } ?>
+                                    <?php } ?>
+                                </b>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+
+        <!-- <section id="dashboard-analytics">
+        </section>
+         -->
+        <div class="content-body">
+
+            <section id="dashboard-analytics">
+
+                <div class="card card-gray">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-chart-pie"></i>
+                            &nbsp;<strong>DATOS</strong>
+                        </h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <figure class="highcharts-figure">
+                                    <div id="container"></div>
+                                    <!-- <p class="highcharts-description">
+                                        Variable radius pie charts can be used to visualize a
+                                        second dimension in a pie chart. In this chart, the more
+                                        densely populated countries are drawn further out, while the
+                                        slice width is determined by the size of the country.
+                                    </p> -->
+                                </figure>
+                            </div>
+
+                            <div class="col-md-6">
+                                <figure class="highcharts-figure">
+                                    <div id="container1"></div>
+                                    <!-- <p class="highcharts-description">
+                                        Variable radius pie charts can be used to visualize a
+                                        second dimension in a pie chart. In this chart, the more
+                                        densely populated countries are drawn further out, while the
+                                        slice width is determined by the size of the country.
+                                    </p> -->
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <section id="basic-horizontal-layouts">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="card card-browser-states">
+                            <div class="card-header gradient-warning">
+                                <div>
+                                    <h4 class="card-title"><strong>Vendedores Chiclayo</strong> </h4>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <?php if (isset($this->ConsultaVendedorAlmacen)) { ?>
+                                    <?php foreach ($this->ConsultaVendedorAlmacen as $dt) { ?>
+                                        <div class="transaction-item">
+                                            <div class="media">
+                                                <div class="avatar bg-light-success rounded">
+                                                    <div class="avatar-content">
+                                                        <i data-feather="user-check" class="avatar-icon font-medium-3"></i>
+                                                    </div>
+                                                </div>
+                                                <h6 class="align-self-center mb-0"> &nbsp; <?php echo $dt['v_codvend'] ?>-<?php echo $dt['v_name'] ?></h6>
+                                            </div>
+                                            <br>
+                                        </div>
+                                    <?php } ?>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="card card-browser-states">
+                            <div class="card-header gradient-info">
+                                <div>
+                                    <h4 class="card-title"><strong>Vendedores Huancayo</strong> </h4>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <?php if (isset($this->ConsultaVendedorHuapt)) { ?>
+                                    <?php foreach ($this->ConsultaVendedorHuapt as $dt) { ?>
+                                        <div class="transaction-item">
+                                            <div class="media">
+                                                <div class="avatar bg-light-warning rounded">
+                                                    <div class="avatar-content">
+                                                        <i data-feather="user-check" class="avatar-icon font-medium-3"></i>
+                                                    </div>
+                                                </div>
+                                                <h6 class="align-self-center mb-0"> &nbsp; <?php echo $dt['v_codvend'] ?>-<?php echo $dt['v_name'] ?></h6>
+                                            </div>
+                                            <br>
+                                        </div>
+                                    <?php } ?>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="card card-browser-states">
+                            <div class="card-header gradient-info">
+                                <div>
+                                    <h4 class="card-title"><strong>Vendedores Arequipa</strong> </h4>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <?php if (isset($this->ConsultaVendedorAreqpt)) { ?>
+                                    <?php foreach ($this->ConsultaVendedorAreqpt as $dt) { ?>
+                                        <div class="transaction-item">
+                                            <div class="media">
+                                                <div class="avatar bg-light-primary rounded">
+                                                    <div class="avatar-content">
+                                                        <i data-feather="user-check" class="avatar-icon font-medium-3"></i>
+                                                    </div>
+                                                </div>
+                                                <h6 class="align-self-center mb-0"> &nbsp; <?php echo $dt['v_codvend'] ?>-<?php echo $dt['v_name'] ?></h6>
+                                            </div>
+                                            <br>
+                                        </div>
+                                    <?php } ?>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </div>
+
+
+
+        <!-- <div class="content-body" style="color:rgb(248, 248, 248);">
+            <section class="col-lg-6">
+                <div class="card card-gray">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-chart-pie"></i>
+                            &nbsp;<strong>Ventas Sede</strong>
+                        </h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <figure class="highcharts-figure">
+                                    <div id="container8"></div>
+                                </figure>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+        </div> -->
+    </div>
+</div>
+<!-- END: Content-->
+
+
+<!-- 
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+
+
+        <div class="content-body" style="color:rgb(248, 248, 248);">
+            <section class="col-lg-6 connectedSortable">
+
+                <div class="card card-gray">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-chart-pie"></i>
+                            &nbsp;<strong>Ausentismo remunerado</strong>
+                        </h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <figure class="highcharts-figure">
+                                    <div id="container8"></div>
+                                </figure>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+        </div>
+
+    </div>
+</div> -->

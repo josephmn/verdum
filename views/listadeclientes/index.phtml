@@ -1,0 +1,92 @@
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-left mb-0">
+                                <b><?php foreach ($_SESSION['submenus'] as $menu) { ?>
+                                        <?php if ($this->_controlador == $menu['v_link']) {
+                                            echo $menu['v_descripcion'];
+                                        } else {
+                                            '';
+                                        } ?>
+                                    <?php } ?>
+                                </b>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="content-body">
+                <section id="basic-horizontal-layouts">
+                    <div class="row">
+                        <div class="col-md-6 col-12 mb-1">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="busqueda" placeholder="Ruc/Dni/Nombre" aria-describedby="button-addon2" autocomplete="off" />
+                                <div class="input-group-append" id="button-addon2">
+                                    <button id="buscarcliente" class="btn btn-danger waves-effect waves-float waves-light" type="button"><i class="fas fa-search"></i> Buscar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="div-01"></div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12 col-12">
+                                            <table id="tbfruta" class="table table-bordered">
+                                                <thead class="thead-dark">
+                                                    <tr class="text-center">
+                                                        <th>Documento</th>
+                                                        <th>RazonSocial</th>
+                                                        <th>Tipo</th>
+                                                        <th>Direccion</th>
+                                                        <th>Ultima/Visita</th>
+                                                        <th>Ruta</th>
+                                                        <th>Estado</th>
+                                                        <th>Validar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php if (isset($this->clientesruta)) { ?>
+                                                        <?php foreach ($this->clientesruta as $fi) { ?>
+                                                            <tr>
+                                                                <td class="text-left"><span class="badge bg-<?php echo $fi['v_ColorEstado'] ?>"><?php echo $fi['v_codliente'] ?></span></td>
+                                                                <td class="text-left"><?php echo $fi['v_razonSocial'] ?></td>
+                                                                <td><?php echo $fi['v_clasificacion'] ?></td>
+                                                                <td><?php echo $fi['v_direccion'] ?></td>
+                                                                <td class="text-center"><?php echo $fi['v_fechaUltimaVisita'] ?></td>
+                                                                <td class="text-center"><?php echo $fi['v_ruta'] ?></td>
+                                                                <td class="text-center"><span class="badge bg-<?php echo $fi['v_ColorEstado'] ?>"><?php echo $fi['v_estado'] ?></span></td>
+                                                                <td class='text-center'>
+                                                                    <a id='<?php echo $fi['v_codliente'] ?>' <?php $variable1 =  $fi['v_codliente'];
+                                                                                                                $variable2 =  $fi['v_razonSocial'];
+                                                                                                                $variable3 =  $fi['v_ruta'] ?> href="<?php echo BASE_URL ?><?php echo $fi['v_Url'] ?>=<?php echo urlencode($variable1); ?>&variable2=<?php echo utf8_decode(urlencode($variable2)); ?>&variable3=<?php echo utf8_decode(urlencode($variable3)) ?>" class="btn btn-<?php echo $fi['v_btn1Boton'] ?>"><i class="fas fa-<?php echo $fi['v_btn1Imagen'] ?>"></i></a>
+                                                                    <span class="badge bg-<?php echo $fi['v_ColorEstado'] ?>"><?php echo $fi['v_btn1Atencion'] ?></span>
+                                                                </td>
+                                                            </tr>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div> <!-- END: aqui-->
+
+        </div>
+    </div>
+    <!-- END: Content-->

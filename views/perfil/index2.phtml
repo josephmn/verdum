@@ -1,0 +1,1017 @@
+<!-- BEGIN: Content-->
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-left mb-0">
+                            <b><?php foreach ($_SESSION['submenus'] as $menu) { ?>
+                                    <?php if ($this->_controlador == $menu['v_link']) {
+                                        echo $menu['v_descripcion'];
+                                    } else {
+                                        '';
+                                    } ?>
+                                <?php } ?>
+                            </b>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+
+            <!-- Vertical Wizard -->
+            <section class="vertical-wizard">
+                <div class="bs-stepper vertical vertical-wizard-example">
+                    <div class="bs-stepper-header">
+                        <!-- PERFIL -->
+                        <div id="1" class="step" data-target="#descripcion-perfil">
+                            <button id="bt1" type="button" class="step-trigger">
+                                <span class="bs-stepper-box">1</span>
+                                <span class="bs-stepper-label">
+                                    <span class="bs-stepper-title">Mantenimiento de perfil</span>
+                                </span>
+                            </button>
+                        </div>
+                        <!-- PASSWORD -->
+                        <div id="2" class="step" data-target="#descripcion-password">
+                            <button id="bt2" type="button" class="step-trigger">
+                                <span class="bs-stepper-box">2</span>
+                                <span class="bs-stepper-label">
+                                    <span class="bs-stepper-title">Mantenimiento de Password</span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bs-stepper-content">
+                        <!-- DESCRIPCIÓN DEL PUESTO -->
+                        <div id="descripcion-perfil" class="content">
+                            <!-- <div class="media">
+                                <a href="javascript:void(0);" class="mr-25">
+                                    <img src="<?php //echo BASE_URL . $_SESSION['foto'] 
+                                                ?>" id="account-upload-img" class="rounded mr-50" alt="profile image" height="80" width="80" />
+                                </a>
+                                <div class="media-body mt-75 ml-1">
+                                    <label for="account-upload" class="btn btn-sm btn-success mb-75 mr-75">Subir foto</label>
+                                    <input type="file" id="account-upload" hidden accept="image/*" />
+                                    <button class="btn btn-sm btn-secondary mb-75">Reiniciar</button>
+                                    <p>Permitido JPG, JPEG or PNG. Tamaño máximo de 800kB</p>
+                                </div>
+                            </div> -->
+                            <div class="row">
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="account-username">Nombres</label>
+                                        <input type="text" class="form-control" id="nombres" placeholder="nombre" value="<?php if (count($this->login) > 0) {
+                                                                                                                                echo $this->login[0]['v_nombres'];
+                                                                                                                            } else {
+                                                                                                                                echo "";
+                                                                                                                            }; ?>" />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="account-name">Apellidos</label>
+                                        <input type="text" class="form-control" id="apellidos" placeholder="apellidos" value="<?php if (count($this->login) > 0) {
+                                                                                                                                    echo $this->login[0]['v_apellidos'];
+                                                                                                                                } else {
+                                                                                                                                    echo "";
+                                                                                                                                }; ?>" />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="account-e-mail">Correo</label>
+                                        <input type="email" class="form-control" id="correo" placeholder="micorre@example.com" value="<?php if (count($this->login) > 0) {
+                                                                                                                                            echo $this->login[0]['v_correo'];
+                                                                                                                                        } else {
+                                                                                                                                            echo "";
+                                                                                                                                        }; ?>" />
+                                    </div>
+                                </div>
+                                <!-- <div class="col-12">
+                                    <button id="btnregistros" type="button" class="btn btn-warning mt-2 mr-1 ">Guardar cambios</button>
+                                </div> -->
+                            </div>
+                            <button id="btnregistros" type="submit" class="btn btn-warning">
+                                <i data-feather='save'></i><span>&nbsp;&nbsp;Guardar</span>
+                            </button>
+                        </div>
+                        <!-- PRINCIPALES CONOCIMIENTOS Y EXPERIENCIA -->
+                        <div id="descripcion-password" class="content">
+                            <h4 class="mb-0 font-weight-bolder">PRINCIPALES CONOCIMIENTOS Y EXPERIENCIA</h4>
+
+                            <body style="text-align: justify;">
+                                <small class="text">Considere lo mínimo requerido para la posición.
+                                </small>
+                            </body>
+                            <br>
+                            <br>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label class="form-label font-weight-bolder">- Instrucción:</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <!-- Custom checkbox -->
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="chktecnico" />
+                                                        <label class="custom-control-label" for="chktecnico"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <label class="form-control">Técnico</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="chkuniversitario" checked />
+                                                        <label class="custom-control-label" for="chkuniversitario"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <label class="form-control">Universitario</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="chkpostgrado" />
+                                                        <label class="custom-control-label" for="chkpostgrado"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <label class="form-control">Post Grado</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="chkotros" />
+                                                        <label class="custom-control-label" for="chkotros"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <label class="form-control">Otros</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row col-md-8">
+                                    <label for="colFormLabel" class="col-sm-2 col-form-label">Indicar otros:</label>
+                                    <div class="col-sm-10">
+                                        <input id="indicar-otro" type="text" class="form-control" placeholder="ingrese otros" autocomplete="off" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label class="form-label font-weight-bolder">- Carrera profesional y/o técnica:</label>
+                                    <input type="text" id="profesion" class="form-control" placeholder="ingeniería, administración,..." autocomplete="off" />
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label class="form-label font-weight-bolder">- Conocimiento:</label>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" id="customRadio1" name="conocimiento" checked />
+                                        <label class="custom-control-label" for="customRadio1">Requerido</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" id="customRadio2" name="conocimiento" />
+                                        <label class="custom-control-label" for="customRadio2">No requerido</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label class="form-label font-weight-bolder">- Idiomas:</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-12">
+                                    <div class="form-group">
+                                        <button id="btnagregarpri" type="button" class="btn btn-warning">
+                                            <i data-feather='plus'></i><span>&nbsp;&nbsp;Agregar idiomas</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-12">
+                                    <table id="example5" class="table table-bordered">
+                                        <thead class="thead-dark">
+                                            <tr class="text-center">
+                                                <th>#</th>
+                                                <th>Idioma</th>
+                                                <th>Habla</th>
+                                                <th>Lee</th>
+                                                <th>Escribe</th>
+                                                <th>#</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tablita-pri" class="text-center">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label class="form-label font-weight-bolder">- Programas Informáticos:</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-12">
+                                    <div class="form-group">
+                                        <button id="btnagregarpro" type="button" class="btn btn-warning">
+                                            <i data-feather='plus'></i><span>&nbsp;&nbsp;Agregar programas</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-12">
+                                    <table id="example6" class="table table-bordered">
+                                        <thead class="thead-dark">
+                                            <tr class="text-center">
+                                                <th>#</th>
+                                                <th>Programa</th>
+                                                <th>Nivel</th>
+                                                <th>#</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tablita-pro" class="text-center">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label class="form-label font-weight-bolder">- Experiencia previa (indicar cantidad de años en los casos que aplique):</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input id="sector" type="checkbox" class="custom-control-input" />
+                                                        <label class="custom-control-label" for="sector"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <label class="form-control">En el sector</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <input id="anhio-sector" type="text" class="form-control validanumericos" placeholder="# años (indicar)" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input id="personal-acargo" type="checkbox" class="custom-control-input" />
+                                                        <label class="custom-control-label" for="personal-acargo"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <label class="form-control">Con personal acargo</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <input id="anhio-personal-acargo" type="text" class="form-control validanumericos" placeholder="# años (indicar)" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input id="puestos-similares" type="checkbox" class="custom-control-input" />
+                                                        <label class="custom-control-label" for="puestos-similares"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <label class="form-control">En puestos similares</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <input id="anhio-puestos-similares" type="text" class="form-control validanumericos" placeholder="# años (indicar)" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label class="form-label font-weight-bolder">- Otros conocimientos específicos:</label>
+                                    <textarea id="conocimientos" class="form-control" rows="3" placeholder="escribir breve descripción..." autocomplete="off"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input id="otro-licencias" type="checkbox" class="custom-control-input" />
+                                                        <label class="custom-control-label" for="otro-licencias"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <label class="form-control">Licencias</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <input id="desc-otro-licencias" type="text" class="form-control" placeholder="indicar licencias..." />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input id="otro-certificaciones" type="checkbox" class="custom-control-input" />
+                                                        <label class="custom-control-label" for="otro-certificaciones"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <label class="form-control">Certificaciones</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <input id="desc-otro-certificaciones" type="text" class="form-control" placeholder="indicar certificaciones..." />
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-success btn-prev">
+                                    <i data-feather="arrow-left" class="align-middle mr-sm-25 mr-0"></i>
+                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                </button>
+                                <button id="btngrabarmon" type="submit" class="btn btn-secondary">
+                                    <i data-feather='save'></i><span>&nbsp;&nbsp;Guardar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- /Vertical Wizard -->
+
+        </div>
+    </div>
+</div>
+<!-- END: Content-->
+
+<!-- MODALES PARA PRINCIPALES RESPONSABILIDADES (INICIO) -->
+<!-- MODAL AGREGAR DATOS -->
+<div class="modal fade" id="modal-agregar" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">AGREGAR RESPONSABILIDADES</h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="form-label font-weight-bolder">Acciones (¿Qué hace?, ¿Cómo se hace?):</label>
+                        <textarea class="form-control" id="acciones" tabindex="1" autofocus rows="3" placeholder="escribir acciones..." autocomplete="off"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="form-label font-weight-bolder">Resultado final esperado:</label>
+                        <textarea class="form-control" id="resultado" tabindex="2" rows="3" placeholder="escribir acciones..." autocomplete="off"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button id="btnguardar" tabindex="3" type="button" class="btn btn-success btn-block"><b>Aceptar</b></button>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-6">
+                            <button id="btncancelar" tabindex="4" type="button" class="btn btn-danger btn-block"><b>Cancelar</b></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL ELIMINAR DATO-->
+<div class="modal fade" id="modal-eliminar" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ELIMINAR RESPONSABILIDADES: </h5><b><span id="idtabla"></span></b>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+
+                <!-- <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="form-label font-weight-bolder">Acciones (¿Qué hace?, ¿Cómo se hace?):</label>
+                        <textarea class="form-control" id="acciones" tabindex="1" autofocus rows="3" placeholder="escribir acciones..." autocomplete="off"></textarea>
+                    </div>
+                </div> -->
+
+                <!-- <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="form-label font-weight-bolder">Resultado final esperado:</label>
+                        <textarea class="form-control" id="resultado" tabindex="2" rows="3" placeholder="escribir acciones..." autocomplete="off"></textarea>
+                    </div>
+                </div> -->
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button id="btneliminar" type="button" class="btn btn-success btn-block"><b>Aceptar</b></button>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-6">
+                            <button id="btneliminarcancelar" type="button" class="btn btn-danger btn-block"><b>Cancelar</b></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODALES PARA PRINCIPALES RESPONSABILIDADES (FIN) -->
+
+
+<!-- MODALES PARA IMPACTO (INICIO) -->
+<!-- MODAL AGREGAR DATOS -->
+<div class="modal fade" id="modal-agregar-impacto" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">AGREGAR IMPACTO CUANTITATIVO DEL PUESTO</h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="form-label font-weight-bolder">Principales dimenciones / Magnitudes:</label>
+                        <!-- <textarea class="form-control" id="acciones" tabindex="1" autofocus rows="3" placeholder="escribir acciones..." autocomplete="off"></textarea> -->
+                        <input type="text" id="dimension-impacto" tabindex="1" class="form-control" placeholder="ingrese..." autocomplete="off" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="form-label font-weight-bolder">Magnitudes:</label>
+                        <!-- <textarea class="form-control" id="resultado" tabindex="2" rows="3" placeholder="escribir acciones..." autocomplete="off"></textarea> -->
+                        <input type="text" id="magnitud-impacto" onkeypress="pulsar(event)" tabindex="2" class="form-control numeral-mask" placeholder="10,000" id="numeral-formatting" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button id="btnguardar-impacto" tabindex="3" type="button" class="btn btn-success btn-block"><b>Aceptar</b></button>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-6">
+                            <button id="btncancelar-impacto" tabindex="4" type="button" class="btn btn-danger btn-block"><b>Cancelar</b></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL ELIMINAR DATO-->
+<div class="modal fade" id="modal-eliminar-impacto" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ELIMINAR IMPACTO CUANTITATIVO DEL PUESTO: </h5><b><span id="idtabla-impacto"></span></b>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button id="btneliminar-impacto" type="button" class="btn btn-success btn-block"><b>Aceptar</b></button>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-6">
+                            <button id="btneliminarcancelar-impacto" type="button" class="btn btn-danger btn-block"><b>Cancelar</b></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODALES PARA IMPACTO (FIN) -->
+
+
+<!-- MODALES PARA ORGANIZACION (INICIO) -->
+<!-- MODAL AGREGAR DATOS -->
+<div class="modal fade" id="modal-agregar-org" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">AGREGAR ÓRGANIZACION</h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="form-label font-weight-bolder">Puestos que le reportan:</label>
+                        <textarea class="form-control" id="puesto-org" tabindex="1" autofocus rows="3" placeholder="escribir puestos..." autocomplete="off"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="form-label font-weight-bolder">Número de reportes:</label>
+                        <textarea class="form-control" id="reporte-org" tabindex="2" rows="3" placeholder="escribir reportes..." autocomplete="off"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button id="btnguardar-org" tabindex="3" type="button" class="btn btn-success btn-block"><b>Aceptar</b></button>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-6">
+                            <button id="btncancelar-org" tabindex="4" type="button" class="btn btn-danger btn-block"><b>Cancelar</b></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL ELIMINAR DATO-->
+<div class="modal fade" id="modal-eliminar-org" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ELIMINAR ÓRGANIZACION: </h5><b><span id="idtabla-org"></span></b>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button id="btneliminar-org" type="button" class="btn btn-success btn-block"><b>Aceptar</b></button>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-6">
+                            <button id="btneliminarcancelar-org" type="button" class="btn btn-danger btn-block"><b>Cancelar</b></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODALES PARA ORGANIZACION (FIN) -->
+
+
+<!-- MODALES PARA RESPONSABILIDAD POR LAS RELACIONES (INICIO) -->
+<!-- MODAL AGREGAR DATOS -->
+<div class="modal fade" id="modal-agregar-res" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">AGREGAR RESPONSABILIDADES POR LAS RELACIONES</h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="form-label font-weight-bolder">Entidad / Área:</label>
+                        <input type="text" id="entidad-res" tabindex="1" class="form-control" placeholder="ingrese entidad / área..." autocomplete="off" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="form-label font-weight-bolder">Cargo:</label>
+                        <textarea class="form-control" id="cargo-res" tabindex="2" rows="3" placeholder="escribir cargos..." autocomplete="off"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="form-label font-weight-bolder">Objetivo / Implicancia:</label>
+                        <textarea class="form-control" id="objetivo-res" tabindex="3" rows="3" placeholder="escribir objetivos..." autocomplete="off"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button id="btnguardar-res" tabindex="4" type="button" class="btn btn-success btn-block"><b>Aceptar</b></button>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-6">
+                            <button id="btncancelar-res" tabindex="5" type="button" class="btn btn-danger btn-block"><b>Cancelar</b></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL ELIMINAR DATO-->
+<div class="modal fade" id="modal-eliminar-res" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ELIMINAR RESPONSABILIDADES POR LAS RELACIONES: </h5><b><span id="idtabla-res"></span></b>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button id="btneliminar-res" type="button" class="btn btn-success btn-block"><b>Aceptar</b></button>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-6">
+                            <button id="btneliminarcancelar-res" type="button" class="btn btn-danger btn-block"><b>Cancelar</b></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODALES PARA RESPONSABILIDAD POR LAS RELACIONES (FIN) -->
+
+
+<!-- MODALES PARA COMPLEJIDAD DE LA POSICION (INICIO) -->
+<!-- MODAL AGREGAR DATOS -->
+<div class="modal fade" id="modal-agregar-com" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">AGREGAR COMPLEJIDAD DE LA POSICIÓN</h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="form-label font-weight-bolder">Decisiones:</label>
+                        <textarea class="form-control" id="decisiones-com" tabindex="1" rows="3" placeholder="escribir decisión..." autocomplete="off"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="form-label font-weight-bolder">Recomendaciones:</label>
+                        <textarea class="form-control" id="recomendaciones-com" tabindex="2" rows="3" placeholder="escribir recomendación..." autocomplete="off"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button id="btnguardar-com" tabindex="3" type="button" class="btn btn-success btn-block"><b>Aceptar</b></button>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-6">
+                            <button id="btncancelar-com" tabindex="4" type="button" class="btn btn-danger btn-block"><b>Cancelar</b></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL ELIMINAR DATO-->
+<div class="modal fade" id="modal-eliminar-com" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ELIMINAR COMPLEJIDAD DE LA POSICIÓN: </h5><b><span id="idtabla-com"></span></b>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button id="btneliminar-com" type="button" class="btn btn-success btn-block"><b>Aceptar</b></button>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-6">
+                            <button id="btneliminarcancelar-com" type="button" class="btn btn-danger btn-block"><b>Cancelar</b></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODALES PARA COMPLEJIDAD DE LA POSICION (FIN) -->
+
+
+<!-- MODALES PARA IDIOMAS (INICIO) -->
+<!-- MODAL AGREGAR DATOS -->
+<div class="modal fade" id="modal-agregar-pri" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">AGREGAR IDIOMAS</h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="form-label font-weight-bolder">Idioma:</label>
+                        <input type="text" id="idioma-pri" tabindex="1" class="form-control" placeholder="ingrese idioma..." autocomplete="off" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="form-label font-weight-bolder">Habla:</label>
+                        <select id="habla-pri" tabindex="2" class="form-control form-control-lg">
+                            <option value="0">Básico</option>
+                            <option value="1">Intermedio</option>
+                            <option value="2">Avanzado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="form-label font-weight-bolder">Lee:</label>
+                        <select id="lee-pri" tabindex="3" class="form-control form-control-lg">
+                            <option value="0">Básico</option>
+                            <option value="1">Intermedio</option>
+                            <option value="2">Avanzado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="form-label font-weight-bolder">Escribe:</label>
+                        <select id="escribe-pri" tabindex="4" class="form-control form-control-lg">
+                            <option value="0">Básico</option>
+                            <option value="1">Intermedio</option>
+                            <option value="2">Avanzado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button id="btnguardar-pri" tabindex="5" type="button" class="btn btn-success btn-block"><b>Aceptar</b></button>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-6">
+                            <button id="btncancelar-pri" tabindex="6" type="button" class="btn btn-danger btn-block"><b>Cancelar</b></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL ELIMINAR DATO-->
+<div class="modal fade" id="modal-eliminar-pri" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ELIMINAR IDIOMAS: </h5><b><span id="idtabla-pri"></span></b>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button id="btneliminar-pri" type="button" class="btn btn-success btn-block"><b>Aceptar</b></button>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-6">
+                            <button id="btneliminarcancelar-pri" type="button" class="btn btn-danger btn-block"><b>Cancelar</b></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODALES PARA IDIOMAS (FIN) -->
+
+
+<!-- MODALES PARA IDIOMAS (INICIO) -->
+<!-- MODAL AGREGAR DATOS -->
+<div class="modal fade" id="modal-agregar-pro" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">AGREGAR PROGRAMA INFORMÁTICO</h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="form-label font-weight-bolder">Programa informático:</label>
+                        <input type="text" id="informatico-pro" tabindex="1" class="form-control" placeholder="ingrese idioma..." autocomplete="off" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="form-label font-weight-bolder">Nivel:</label>
+                        <select id="nivel-informatico-pro" tabindex="2" class="form-control form-control-lg">
+                            <option value="0">Básico</option>
+                            <option value="1">Intermedio</option>
+                            <option value="2">Avanzado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button id="btnguardar-pro" tabindex="3" type="button" class="btn btn-success btn-block"><b>Aceptar</b></button>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-6">
+                            <button id="btncancelar-pro" tabindex="4" type="button" class="btn btn-danger btn-block"><b>Cancelar</b></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL ELIMINAR DATO-->
+<div class="modal fade" id="modal-eliminar-pro" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ELIMINAR PROGRAMA INFORMÁTICO: </h5><b><span id="idtabla-pro"></span></b>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button id="btneliminar-pro" type="button" class="btn btn-success btn-block"><b>Aceptar</b></button>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-6">
+                            <button id="btneliminarcancelar-pro" type="button" class="btn btn-danger btn-block"><b>Cancelar</b></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODALES PARA IDIOMAS (FIN) -->

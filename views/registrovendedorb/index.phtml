@@ -1,0 +1,324 @@
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <!-- <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-left mb-0">
+                                <b><?php foreach ($_SESSION['submenus'] as $menu) { ?>
+                                        <?php if ($this->_controlador == $menu['v_link']) {
+                                            echo $menu['v_descripcion'];
+                                        } else {
+                                            '';
+                                        } ?>
+                                    <?php } ?>
+                                </b>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="content-body">
+                <section class="app-user-view">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-7">
+                            <div class="card user-card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-xl-11 col-lg-6 d-flex flex-column justify-content-between border-container-lg">
+                                            <div class="user-avatar-section">
+                                                <div class="d-flex justify-content-start">
+                                                    <img class="img-fluid rounded" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" height="65" width="90" alt="User avatar">
+                                                    <div class="d-flex flex-column ml-1">
+                                                        <div class="user-info mb-1">
+                                                            <h3 class="mb-0">Registro de vendedor</h3>
+                                                        </div>
+                                                        <div class="d-flex flex-wrap">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <button id="procesar" type="button" style="height:40px;width:120px" class="btn btn-relief-primary waves-effect waves-float waves-light btn-block btn-sm"><i data-feather='save'></i><strong> Guardar</strong></button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <button id="cancelar" type="button" style="height:40px;width:120px" class="btn btn-relief-danger waves-effect waves-float waves-light btn-block btn-sm"><i data-feather='minus-circle'></i><strong> Cancelar</strong></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div id="div-01"></div>
+                                                    <hr size="0px" style="border-color:#00BFA5;" />
+                                                    <div class="form-group row">
+                                                        <label for="colFormLabelLg" class="col-sm-3 col-form-label font-weight-bolder"></label>
+                                                        <div class="col-sm-9">
+                                                            <div class="custom-control custom-switch custom-switch-success">
+                                                                <input type="checkbox" class="custom-control-input" id="customSwitch10" checked />
+                                                                <label class="custom-control-label" for="customSwitch10">
+                                                                    <span class="switch-icon-left"><i data-feather="check"></i></span>
+                                                                    <span class="switch-icon-right"><i data-feather="x"></i></span>
+                                                                </label><strong>Desmarcar si es personal temporal</strong>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="colFormLabelLg" class="col-sm-3 col-form-label font-weight-bolder">Codigo </label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" class="form-control" id="codigovendedor" placeholder="codigo vendedor" autocomplete="of" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="colFormLabelLg" class="col-sm-3 col-form-label font-weight-bolder">Dni </label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" class="form-control" id="documento" placeholder="documento" autocomplete="off" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="colFormLabel" class="col-sm-3 col-form-label font-weight-bolder">Nombre </label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" class="form-control" id="nombrevendedor" placeholder="nombre vendedor" autocomplete="off" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="colFormLabel" class="col-sm-3 col-form-label font-weight-bolder">Cargo </label>
+                                                        <div class="col-sm-9">
+                                                            <select id="perfilvendedor" class="select2 form-control form-control-lg">
+                                                                <?php foreach ($this->ListadoPerfilVendedor as $pf) { ?>
+                                                                    <option <?php echo $pf['v_default'] ?> value="<?php echo $pf['i_id']; ?>"><?php echo $pf['v_nombre'] ?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="colFormLabel" class="col-sm-3 col-form-label font-weight-bolder">Supervisor </label>
+                                                        <div class="col-sm-9">
+                                                            <select id="supervisor" class="select2 form-control form-control-lg">
+                                                                <?php foreach ($this->listavendedor as $vn) { ?>
+                                                                    <option <?php echo $vn['v_default']; ?> value="<?php echo $vn['i_id']; ?>"><?php echo $vn['v_nombre']; ?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="form-group row">
+                                                        <label for="colFormLabel" class="col-sm-3 col-form-label font-weight-bolder">Zona Venta </label>
+                                                        <div class="col-sm-9">
+                                                            <select id="zonaventa" class="select2 form-control form-control-lg">
+                                                                <?php foreach ($this->ListadoZonaVenta as $sd) { ?>
+                                                                    <option <?php echo $sd['v_default']; ?> value="<?php echo $sd['i_id']; ?>"><?php echo $sd['v_nombre']; ?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group row">
+                                                        <label for="colFormLabel" class="col-sm-3 col-form-label font-weight-bolder">Almacen </label>
+                                                        <div class="col-sm-9">
+                                                            <select id="sede" class="select2 form-control form-control-lg">
+                                                                <?php foreach ($this->listasede as $sd) { ?>
+                                                                    <option <?php echo $sd['v_default']; ?> value="<?php echo $sd['i_id']; ?>"><?php echo $sd['v_nombre']; ?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="colFormLabel" class="col-sm-3 col-form-label font-weight-bolder">Jefe Venta</label>
+                                                        <div class="col-sm-9">
+                                                            <select id="jefeventa" class="select2 form-control form-control-lg">
+                                                                <?php foreach ($this->listavendedor as $vn) { ?>
+                                                                    <option <?php echo $vn['v_default']; ?> value="<?php echo $vn['i_id']; ?>"><?php echo $vn['v_nombre']; ?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="colFormLabel" class="col-sm-3 col-form-label font-weight-bolder">Estado </label>
+                                                        <div class="col-sm-9">
+                                                            <select id="estado" class="select2 form-control form-control-lg">
+                                                                <?php foreach ($this->estadocliente as $vn) { ?>
+                                                                    <option <?php echo $vn['v_default']; ?> value="<?php echo $vn['v_id']; ?>"><?php echo $vn['v_descripcion']; ?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /User Card Ends-->
+                    </div>
+
+                </section>
+
+
+
+                <!-- <section id="basic-horizontal-layouts">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="card">
+                                <div class="card-header bg-gradient-success" style="height:50px;">
+                                    <h4 class="alert-heading" style="color:#133337"><i class="fas fa-user-edit"></i> REGISTRAR VENDEDOR</h4>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group row">
+                                                <label for="colFormLabelLg" class="col-sm-3 col-form-label font-weight-bolder">Codigo </label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="colFormLabelLg" placeholder="codigo vendedor" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="colFormLabelLg" class="col-sm-3 col-form-label font-weight-bolder">Dni </label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="colFormLabelLg" placeholder="documento" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="colFormLabel" class="col-sm-3 col-form-label font-weight-bolder">Nombre </label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="colFormLabel" placeholder="nombre vendedor" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+
+                                                <label for="colFormLabel" class="col-sm-3 col-form-label font-weight-bolder">Supervisor </label>
+                                                <div class="col-sm-4">
+                                                    <select id="supervisor" class="select2 form-control form-control-lg">
+                                                        <?php foreach ($this->provincia as $pv) { ?>
+                                                            <option value="<?php echo $pv['i_codigo']; ?>"><?php echo $pv['v_descripcion']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+
+                                                <label for="colFormLabel" class="col-sm-2 col-form-label font-weight-bolder">GrpDespacho </label>
+                                                <div class="col-sm-3">
+                                                    <select id="grupodespacho" class="select2 form-control form-control-lg">
+                                                        <?php foreach ($this->provincia as $pv) { ?>
+                                                            <option value="<?php echo $pv['i_codigo']; ?>"><?php echo $pv['v_descripcion']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="colFormLabel" class="col-sm-3 col-form-label font-weight-bolder">Zona Venta </label>
+                                                <div class="col-sm-4">
+                                                    <select id="zonaventa" class="select2 form-control form-control-lg">
+                                                        <?php foreach ($this->provincia as $pv) { ?>
+                                                            <option value="<?php echo $pv['i_codigo']; ?>"><?php echo $pv['v_descripcion']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+
+                                                <label for="colFormLabel" class="col-sm-2 col-form-label font-weight-bolder">Almacen </label>
+                                                <div class="col-sm-3">
+                                                    <select id="almacen" class="select2 form-control form-control-lg">
+                                                        <?php foreach ($this->provincia as $pv) { ?>
+                                                            <option value="<?php echo $pv['i_codigo']; ?>"><?php echo $pv['v_descripcion']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="colFormLabel" class="col-sm-3 col-form-label font-weight-bolder">Jefe Venta </label>
+                                                <div class="col-sm-4">
+                                                    <select id="jefeventa" class="select2 form-control form-control-lg">
+                                                        <?php foreach ($this->provincia as $pv) { ?>
+                                                            <option value="<?php echo $pv['i_codigo']; ?>"><?php echo $pv['v_descripcion']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+
+                                                <label for="colFormLabel" class="col-sm-2 col-form-label font-weight-bolder">Estado </label>
+                                                <div class="col-sm-3">
+                                                    <select id="estado" class="select2 form-control form-control-lg">
+                                                        <?php foreach ($this->provincia as $pv) { ?>
+                                                            <option value="<?php echo $pv['i_codigo']; ?>"><?php echo $pv['v_descripcion']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr size="8px" style="border-color:black;" />
+                                    <div id="div-00"></div>
+
+                                    <div class="row">
+                                        <div class="col-md-3" style="height:10px;">
+                                        </div>
+
+                                        <div class="col-md-3" style="height:50px;">
+                                            <h6 class="text-center" style="color:rgb(0, 181, 26);height:3px"></h6>
+                                            <div class="form-group">
+                                                <button id="procesar" type="button" style="height:40px" class="btn btn-relief-success waves-effect waves-float waves-light btn-block btn-sm" type="button"><i class="fas fa-save"></i> <strong>Guardar</strong> </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3" style="height:50px;">
+                                            <h6 class="text-center" style="color:rgb(0, 181, 26);height:3px">
+                                            </h6>
+                                            <div class="form-group" style="height:35px;">
+                                                <button id="cancelar" type="button" style="height:40px" class="btn btn-relief-secondary bg-darken-2 colors-container rounded text-white btn-block btn-sm"><i class="fas fa-folder-plus"></i><strong> Cancelar</strong></button>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3" style="height:50px;">
+                                            <h6 class="text-center" style="color:rgb(179, 27, 0);height:3px">
+                                            </h6>
+                                            <div class="form-group">
+                                                <button id="btnbaja" type="button" style="height:40px" class="btn btn-relief-danger bg-darken-2 colors-container rounded text-white btn-block btn-sm"><i class="fas fa-thumbs-down"></i><strong> Darbaja</strong></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section> -->
+
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->

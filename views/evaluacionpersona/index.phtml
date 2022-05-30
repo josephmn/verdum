@@ -1,0 +1,104 @@
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-left mb-0">
+                                <b><?php foreach ($_SESSION['submenus'] as $menu) { ?>
+                                        <?php if ($this->_controlador == $menu['v_link']) {
+                                            echo $menu['v_descripcion'];
+                                        } else {
+                                            '';
+                                        } ?>
+                                    <?php } ?>
+                                </b>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-body">
+                <section id="basic-horizontal-layouts">
+                    <div class="row">
+                        <div class="col-md-12 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6 class="card-title">Data Personas Evaluacion</h6>
+
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-12">
+                                            <table id="tbEvaluacion" class="table table-bordered">
+                                                <thead class="thead-dark">
+                                                    <tr class="text-center">
+                                                        <th>#ID</th>
+                                                        <th>Nombre</th>
+                                                        <th>Area</th>
+                                                        <th>Cargo</th>
+                                                        <th>Tipo Cargo</th>
+                                                        <th>Pais</th>
+                                                        <th>Sede</th>
+                                                        <th>Jefe</th>
+                                                        <th><i data-feather='settings'></i> Pdf</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php if (isset($this->ListadoEvaluacion)) { ?>
+                                                        <?php foreach ($this->ListadoEvaluacion as $ac) { ?>
+                                                            <tr>
+
+                                                                <td class="text-center"><strong> <?php echo $ac['i_id'] ?></strong> </td>
+
+                                                                <td class="text-left">
+                                                                    <div class="col-md-12 col-sm-2 col-12 mb-2 mb-md-0">
+                                                                        <div class="media">
+                                                                            <div class="avatar bg-light-success mr-0">
+                                                                                <div class="avatar-content">
+                                                                                    <i data-feather="user" stroke-width="3" class="avatar-icon"></i>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="media-body my-auto">
+                                                                                <h5 class="font-weight-bolder mb-0"> &nbsp; <?php echo $ac['v_nombre'] ?></h5>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+
+                                                                <td class="text-left"><?php echo $ac['v_area'] ?></td>
+                                                                <td class="text-left"><?php echo $ac['v_cargo'] ?></td>
+                                                                <td class="text-center"><?php echo $ac['v_tipo_cargo'] ?></td>
+                                                                <td class="text-center"><?php echo $ac['v_zona_pais'] ?></td>
+
+                                                                <td class="text-center"><?php echo $ac['v_sede'] ?></td>
+                                                                <td class="text-center"><?php echo $ac['v_jefe'] ?></td>
+
+                                                                <td class='text-center'>
+                                                                    <a href="<?php echo BASE_URL ?>evaluacionpersona/ver_pdf_evaluacion/<?php echo $ac['i_id'] ?>" class="btn btn-danger btn-sm bol" target="_blank" style="color:white"><i class="fas fa-file-pdf fa-beat"></i></a>
+                                                                    <!-- href="<?php echo BASE_URL ?><?php echo $fi['v_Url'] ?>=<?php echo urlencode($variable1); ?>&variable2=<?php echo utf8_decode(urlencode($variable2)); ?>&variable3=<?php echo utf8_decode(urlencode($variable3)) ?>&variable4=<?php echo utf8_decode(urlencode($variable4)) ?>&variable5=<?php echo utf8_decode(urlencode($variable5)) ?>" class="btn btn-<?php echo $fi['v_btn1Boton'] ?>" -->
+
+                                                                    <!-- <span class="badge badge-danger">Pdf</span> -->
+                                                                    <!-- <a href="<?php echo BASE_URL ?>evaluacionpersona/ver_pdf_evaluacion?var1= <?php echo $ac['i_id'] ?>, &var2=<?php echo $ac['i_id'] ?>" target="_blank"> -->
+                                                                </td>
+                                                            </tr>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div> <!-- END: aqui-->
+        </div>
+    </div>
+    <!-- END: Content-->

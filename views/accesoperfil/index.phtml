@@ -1,0 +1,80 @@
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-left mb-0">
+                                <b><?php foreach ($_SESSION['submenus'] as $menu) { ?>
+                                        <?php if ($this->_controlador == $menu['v_link']) {
+                                            echo $menu['v_descripcion'];
+                                        } else {
+                                            '';
+                                        } ?>
+                                    <?php } ?>
+                                </b>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="content-body">
+                <section id="basic-horizontal-layouts">
+                    <div class="row">
+                        <div class="col-md-12 col-12">
+                            <div class="card">
+                                <!-- <div class="card-header">
+                                    <h4 class="card-title">Lista de usuarios</h4>
+                                </div> -->
+                                <div class="card-body">
+                                    <div class="row">
+
+                                        <div class="col-md-12 col-12">
+                                            <table id="example1" class="table table-bordered">
+                                                <thead class="thead-dark">
+                                                    <tr class="text-center">
+                                                        <th>Id</th>
+                                                        <th>Nombre</th>
+                                                        <th>Descripcion</th>
+                                                        <th>FechaRegistro</th>
+                                                        <th>Estado</th>
+                                                        <th>Accesos</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php if (isset($this->perfiles)) { ?>
+                                                        <?php foreach ($this->perfiles as $pr) { ?>
+                                                            <tr>
+                                                                <td class="text-center"><?php echo $pr['i_id'] ?></td>
+                                                                <td class="text-center"><span class="badge bg-<?php echo $pr['v_colorPerfil'] ?>"><?php echo $pr['v_nombre'] ?></td>
+                                                                <td class="text-left"><?php echo $pr['v_nombreperfil'] ?></td>
+                                                                <td class="text-left"><?php echo $pr['fecha_registro'] ?></td>
+                                                                <td class="text-left"><?php echo $pr['i_estado'] ?></td>
+                                                                <td class='text-center'>
+                                                                    <a id='<?php echo $pr['i_id'] ?>' <?php $variable1 =  $pr['i_id'] ?> <?php $variable2 =  $pr['v_nombre'] ?> href="<?php echo BASE_URL ?><?php echo $pr['v_url'] ?>=<?php echo urlencode($variable1); ?>&variable2=<?php echo utf8_decode(urlencode($variable2)); ?>" class="btn btn-<?php echo $pr['v_btn1'] ?>"><i class="fas fa-<?php echo $pr['v_btn1Imagen'] ?>"></i></a>
+                                                                    <span class="badge bg-<?php echo $pr['v_btn1Color'] ?>"><?php echo $pr['v_btn1Nombre'] ?></span>
+                                                                </td>
+                                                            </tr>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div> <!-- END: aqui-->
+
+        </div>
+    </div>
+    <!-- END: Content-->

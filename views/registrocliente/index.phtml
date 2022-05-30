@@ -1,0 +1,367 @@
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <!-- <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-left mb-0">
+                                <b><?php foreach ($_SESSION['submenus'] as $menu) { ?>
+                                        <?php if ($this->_controlador == $menu['v_link']) {
+                                            echo $menu['v_descripcion'];
+                                        } else {
+                                            '';
+                                        } ?>
+                                    <?php } ?>
+                                </b>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="content-body">
+                <section id="basic-horizontal-layouts">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="card">
+                                <div class="card-header bg-gradient-success" style="height:45px;">
+                                    <h4 class="alert-heading" style="color:#133337"><i class="fas fa-user-edit"></i> CLIENTE NUEVO</h4>
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Tipo documento</label>
+                                            <select id="tipodocumento" class="select2 form-control form-control-lg">
+                                                <?php foreach ($this->tipodocumento as $tpd) { ?>
+                                                    <option <?php echo $tpd['v_default']; ?> value="<?php echo $tpd['Dato']; ?>"><?php echo $tpd['Descripcion']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Estado</label>
+                                            <select id="estadocliente" class="select2 form-control form-control-lg">
+                                                <?php foreach ($this->estadocliente as $stc) { ?>
+                                                    <option value="<?php echo $stc['v_id']; ?>"><?php echo $stc['v_descripcion']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Validado con Sunat-->
+                                    <div class="row">
+                                        <div class="form-group col-md-6" style="height:60px">
+                                            <label class="form-label font-weight-bolder" style="color:rgb(37,66,132)"><strong>VALIDA CON</strong></label>
+                                            <span class="brand-logo">
+                                                <img class="brand-image" src="<?php echo BASE_URL ?>public/dist/img/sunat.png" alt="avatar" height="30" width="100">
+                                            </span>
+                                            <div class="input-group">
+                                                <input type="text" id="documento" class="form-control" style="text-transform:uppercase" placeholder="Documento" aria-describedby="button-addon2" onkeypress="return valideKey(event);" autocomplete="of" />
+                                                <div class="input-group-append">
+                                                    <button id="loadsunat" class="btn btn-danger waves-effect waves-float waves-light" type="button"> <i data-feather='send'></i> <strong>Validar</strong> </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-6" style="height:60px">
+                                            <label class="form-label font-weight-bolder">NOMBRE CLIENTE</label>
+                                            <span class="brand-logo">
+                                                <img class="brand-image" src="<?php echo BASE_URL ?>public/dist/img/user.png" alt="avatar" height="30" width="50">
+                                            </span>
+                                            <div class="input-group input-group-merge">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i data-feather="user"></i></span>
+                                                </div>
+                                                <input type="text" id="nomcliente" class="form-control" style="text-transform:uppercase" name="fname-icon" placeholder="Nombre cliente" autocomplete="of" />
+                                            </div>
+                                        </div>
+
+
+                                        <!-- ff -->
+                                        <div class="form-group col-md-12">
+                                            <div id="myProgress ">
+                                                <div id="div-01"></div>
+                                                <div id="myBar" style="font-size: 11px">0%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Tipo cliente</label>
+                                            <select id="tipocliente" class="select2 form-control form-control-lg">
+                                                <?php foreach ($this->tipocliente as $tpc) { ?>
+                                                    <option <?php echo $tpc['v_default']; ?> value="<?php echo $tpc['Dato']; ?>"><?php echo $tpc['Descripcion']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Subtipo del cliente</label>
+                                            <select id="subtipocliente" class="select2 form-control form-control-lg">
+                                                <?php foreach ($this->subtipocli as $stp) { ?>
+                                                    <option <?php echo $stp['v_default']; ?> value="<?php echo $stp['v_subtipocli']; ?>"><?php echo $stp['v_descripcion']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Lista de precio</label>
+                                            <select id="listaprecio" class="select2 form-control form-control-lg">
+                                                <?php foreach ($this->claseprecio as $lsp) { ?>
+                                                    <option <?php echo $lsp['v_default']; ?> value="<?php echo $lsp['Dato']; ?>"><?php echo $lsp['Descripcion']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Condicion de pago</label>
+                                            <select id="condicionpago" class="select2 form-control form-control-lg">
+                                                <?php foreach ($this->condicionpago as $cdp) { ?>
+                                                    <option value="<?php echo $cdp['Dato']; ?>"><?php echo $cdp['Descripcion']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Direccion</label>
+                                            <input type="text" id="direccion" class="form-control" maxlength="30" placeholder="Direccion" style="text-transform:uppercase" autocomplete="of" /><i>(Máximo 30 caracteres)</i>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Referencia</label>
+                                            <input type="text" id="referencia" class="form-control" maxlength="30" placeholder="Referencia" style="text-transform:uppercase" autocomplete="of" /><i>(Máximo 30 caracteres)</i>
+                                        </div>
+                                    </div> -->
+
+                                    
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Direccion</label>
+                                            <!-- <input type="text" id="direccion" class="form-control" maxlength="60" placeholder="Direccion" style="text-transform:uppercase" autocomplete="of" /><i>(Máximo 60 caracteres)</i> -->
+                                            <textarea data-length="60" maxlength="60" class="form-control char-textarea" id="direccion" rows="1" style="text-transform:uppercase" autocomplete="of" placeholder="direccion"></textarea><i  style="color:#c33d38">(Máximo 60 caracteres)</i>
+                                            <small class="textarea-counter-value float-right"><span class="char-count">0</span> / 60 </small>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Referencia</label>
+                                            <!-- <input type="text" id="referencia" class="form-control" maxlength="30" placeholder="Referencia" style="text-transform:uppercase" autocomplete="of" /><i>(Máximo 30 caracteres)</i> -->
+                                            <textarea data-length="30" maxlength="30" class="form-control" id="referencia" rows="1" style="text-transform:uppercase" autocomplete="of" placeholder="referencia"></textarea><i style="color:#c33d38">(Máximo 30 caracteres)</i>
+                                            <!-- <small   class="textarea-counter-value float-right"><span   class="char-count">0</span> / 30 </small> -->
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Zona de ruta</label>
+                                            <select id="zonaruta" class="select2 form-control form-control-lg">
+                                                <?php foreach ($this->zonaruta as $znd) { ?>
+                                                    <option <?php echo $znd['v_default']; ?> value="<?php echo $znd['Dato']; ?>"><?php echo $znd['Descripcion']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Vendedor a cargo</label>
+                                            <div class="input-group input-group-merge">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i data-feather="user"></i></span>
+                                                </div>
+                                                <input type="text" id="vendacargo" class="form-control" name="fname-icon" placeholder="Vendedor a cargo" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Pais</label>
+                                            <select id="pais" class="select2 form-control form-control-lg">
+                                                <?php foreach ($this->pais as $ps) { ?>
+                                                    <option <?php echo $ps['v_default']; ?> value="<?php echo $ps['i_codigo']; ?>"><?php echo $ps['v_descripcion']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Departamento</label>
+                                            <select id="departamento" class="select2 form-control form-control-lg">
+                                                <?php foreach ($this->departamento as $dp) { ?>
+                                                    <option value="<?php echo $dp['i_codigo']; ?>"><?php echo $dp['v_descripcion']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Provincia</label>
+                                            <select id="provincia" class="select2 form-control form-control-lg">
+                                                <?php foreach ($this->provincia as $pv) { ?>
+                                                    <option value="<?php echo $pv['i_codigo']; ?>"><?php echo $pv['v_descripcion']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Distrito</label>
+                                            <select id="distrito" class="select2 form-control form-control-lg">
+                                                <?php foreach ($this->distrito as $ds) { ?>
+                                                    <option value="<?php echo $ds['i_codigo']; ?>"><?php echo $ds['v_descripcion']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                            <label class="alert alert-primary" style="color:#133337">Correo del cliente</label>
+                                            <div class="input-group input-group-alternative">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i data-feather='mail'></i></span>
+                                                </div>
+                                                <input class="form-control" name="mail" id="mail" placeholder="Correo electrónico" autocomplete="of" type="email" required>
+                                            </div>
+                                            <span id="error" style="display:none;color:red;">Correo no válido</span>
+                                            <span id="success" style="display:none;color:green;">Correo válido</span>
+                                            <span style="color: red; font-size: 12px; display: none;" class="errores correoerror">Ingresa tu correo</span>
+                                        </div>
+                                    </div>
+
+
+                                    <div id="div-00"></div>
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div id="Note"></div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <hr color="#7F7F7F" style="height:1px" size=10>
+
+                                    <div class="row">
+                                        <div class="col-md-3" style="height:10px;">
+                                        </div>
+
+                                        <div class="col-md-3" style="height:50px;">
+                                            <h6 class="text-center" style="color:rgb(0, 181, 26);height:3px"></h6>
+                                            <div class="form-group">
+                                                <button id="procesar" type="button" style="height:40px" class="btn btn-relief-success waves-effect waves-float waves-light btn-block btn-sm" type="button"><i class="fas fa-save"></i> <strong>Guardar</strong> </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3" style="height:50px;">
+                                            <h6 class="text-center" style="color:rgb(0, 181, 26);height:3px">
+                                            </h6>
+                                            <div class="form-group" style="height:35px;">
+                                                <button id="cancelar" type="button" style="height:40px" class="btn btn-relief-secondary bg-darken-2 colors-container rounded text-white btn-block btn-sm"><i class="fas fa-folder-plus"></i><strong> Cancelar</strong></button>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3" style="height:50px;">
+                                            <h6 class="text-center" style="color:rgb(179, 27, 0);height:3px">
+                                            </h6>
+                                            <div class="form-group">
+                                                <button id="btnbaja" type="button" style="height:40px" class="btn btn-relief-danger bg-darken-2 colors-container rounded text-white btn-block btn-sm"><i class="fas fa-thumbs-down"></i><strong> Darbaja</strong></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="modal fade text-left" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-gradient-warning">
+                    <h5 class="modal-title"><i class="fas fa-thumbs-down"></i> DAR BAJA A CLIENTE </h5>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label font-weight-bolder">NOTA</label>
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <!-- <span class="input-group-text"><i data-feather="pocket"></i></span> -->
+                                </div>
+                                <label id="cod" style="color:rgb(179, 27, 0)" class="form-label font-weight-bolder text-center"></label>
+                                <h5 class="alert-danger modal-title">(Si realiza la baja del cliente se inactivara y no podra pasar ventas con el documento)</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="alert-success form-label font-weight-bolder">Ingresar Motivo</label>
+                            <div class="input-group input-group-merge">
+                                <div class=" input-group-prepend">
+                                    <span class="input-group-text"><i data-feather='folder-plus'></i></span>
+                                </div>
+                                <input type="text" id="motivo" class=" form-control" name="fname-icon" placeholder="Ingresar motivo" autocomplete="off" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-label-group mb-0">
+                                <textarea data-length="20" class="form-control char-textarea" id="textarea-counter" rows="3" placeholder="Counter"></textarea>
+                                <label for="textarea-counter">Counter</label>
+                            </div>
+                            <small class="textarea-counter-value float-right"><span class="char-count">0</span> / 20 </small>
+                        </div>
+                    </div> -->
+
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button id="btnsibaja" type="button" class="btn btn-success btn-block waves-effect waves-float waves-light"><b>Aceptar</b></button>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="col-sm-6">
+                                <button id="btnnobaja" type="button" class="btn btn-danger btn-block waves-effect waves-float waves-light"><b>Cancelar</b></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <style>
+        #myProgress {
+            width: 100%;
+            background-color: #f5f5f5;
+        }
+
+        #myBar {
+            width: 3%;
+            height: 13px;
+            background-color: #28c76f;
+            text-align: center;
+            line-height: 13px;
+            color: white;
+            border-radius: 5rem;
+        }
+    </style>

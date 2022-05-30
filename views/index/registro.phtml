@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
+  <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+  <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
+  <meta name="author" content="PIXINVENT">
+  <title>Verdum Perú (Nuevo registro)</title>
+  <!-- <link rel="shortcut icon" type="image/x-icon" href="<?php //echo BASE_URL ?>public/dist/img/favicon.ico"> -->
+  <link rel="shortcut icon" type="image/x-icon" href="<?php echo BASE_URL ?>public/dist/img/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
+
+  <!-- BEGIN: Vendor CSS-->
+  <?php if (isset($_layoutParams['cssSp']) && count($_layoutParams['cssSp'])) : ?>
+    <?php foreach ($_layoutParams['cssSp'] as $layoutcssSp) : ?>
+      <link rel="stylesheet" href="<?php echo  $layoutcssSp ?>">
+    <?php endforeach; ?>
+  <?php endif; ?>
+  <!-- END: Page CSS-->
+
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<body class="horizontal-layout horizontal-menu blank-page navbar-floating footer-static  " data-open="hover" data-menu="horizontal-menu" data-col="blank-page">
+  <!-- BEGIN: Content-->
+  <div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+      <div class="content-header row">
+      </div>
+      <div class="content-body">
+        <div class="auth-wrapper auth-v1 px-2">
+          <div class="auth-inner py-2">
+            <!-- Register v1 -->
+            <div class="card mb-0">
+              <div class="card-body">
+                <a href="javascript:void(0);" class="brand-logo">
+                  <h2 class="brand-text text-success ml-1">Ingrese sus datos</h2>
+                </a>
+
+                <form role="form">
+                  <div class="form-group">
+                    <label for="register-nombre" class="form-label font-weight-bolder">Nombres</label>
+                    <input type="text" class="form-control" id="nombres" name="nombres" placeholder="nombres" tabindex="1" autofocus autocomplete="off" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="register-apellido" class="form-label font-weight-bolder">Apellidos</label>
+                    <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="apellidos" tabindex="2" autocomplete="off" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="register-email" class="form-label font-weight-bolder">Correo</label>
+                    <input type="email" class="form-control" id="correo" name="correo" placeholder="micorreo@example.com" tabindex="3" autocomplete="off" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="register-password" class="form-label font-weight-bolder">Contraseña</label>
+
+                    <div class="input-group input-group-merge form-password-toggle">
+                      <input type="password" class="form-control form-control-merge" id="password" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" tabindex="4" required />
+                      <div class="input-group-append">
+                        <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                      </div>
+                    </div>
+                  </div>
+                  <button id="btnregistrarse" type="button" class="btn btn-success btn-block" tabindex="6">Crear cuenta</button>
+                </form>
+
+                <p class="text-center mt-2">
+                  <span>Ya tienes una cuenta?</span>
+                  <a href="<?php echo BASE_URL ?>index/index"><span>Iniciar sesión</span></a>
+                </p>
+
+                <!-- <div class="divider my-4">
+                  <div class="divider-text">or</div>
+                </div> -->
+
+              </div>
+            </div>
+            <!-- /Register v1 -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL VALIDACION DE CORREO -->
+  <div class="modal fade" id="modal-validar" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">VERIFICACIÓN DE CORREO ELECTRÓNICO</h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <p>
+                Sólo falta una comprobación más. Hemos enviado un código de confirmacion para validar su correo registrado, no cierre la pantalla hasta ingresar el código, muchas gracias.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">@</span>
+                </div>
+                <input id="email" type="text" class="form-control" tabindex="1" autofocus autocomplete="off" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">123</span>
+                </div>
+                <input id="codigo" type="text" class="form-control validanumericos" placeholder="ingrese código" tabindex="2" autofocus autocomplete="off" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-12">
+                <button id="btnvalidacion" type="button" class="btn btn-success btn-block"><b>Validar</b></button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- END: Content-->
+
+  <!-- BEGIN: Llamada a JS-->
+  <?php if (isset($_layoutParams['jsSp']) && count($_layoutParams['jsSp'])) : ?>
+    <?php foreach ($_layoutParams['jsSp'] as $layoutjsSp) : ?>
+      <script src="<?php echo  $layoutjsSp ?>" type="text/javascript"></script>
+    <?php endforeach; ?>
+  <?php endif; ?>
+  <!-- END: Llamada a JS-->
+
+  <script>
+    $(window).on('load', function() {
+      if (feather) {
+        feather.replace({
+          width: 14,
+          height: 14
+        });
+      }
+    })
+  </script>
+
+  <?php if (isset($_layoutParams['js']) && count($_layoutParams['js'])) : ?>
+    <?php foreach ($_layoutParams['js'] as $layout) : ?>
+      <script src="<?php echo  $layout ?>" type="text/javascript"></script>
+    <?php endforeach; ?>
+  <?php endif; ?>
+
+
+</body>
+<!-- END: Body-->
+
+</html>

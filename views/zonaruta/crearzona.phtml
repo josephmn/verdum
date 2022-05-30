@@ -1,0 +1,146 @@
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <!-- <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-left mb-0">
+                                <b><?php foreach ($_SESSION['submenus'] as $menu) { ?>
+                                        <?php if ($this->_controlador == $menu['v_link']) {
+                                            echo $menu['v_descripcion'];
+                                        } else {
+                                            '';
+                                        } ?>
+                                    <?php } ?>
+                                </b>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="content-body">
+                <section id="basic-horizontal-layouts">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="card">
+                                <div class="card-header bg-gradient-info" style="height:50px;">
+                                    <h4 class="alert-heading" style="color:#133337"><i class="fas fa-user-edit"></i> ASIGNAR ZONA/RUTA</h4>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Codigo vendedor</label>
+                                            <div class="input-group input-group-merge">
+                                                <div class=" input-group-prepend">
+                                                    <span class="input-group-text"><i data-feather="user"></i></span>
+                                                </div>
+                                                <input type="text" id="codvend" style="color:rgb(68,120,46)" class="alert-success form-control" name="fname-icon" placeholder="documento cliente" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label font-weight-bolder">Nombre vendedor</label>
+                                            <div class="input-group input-group-merge">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i data-feather="user"></i></span>
+                                                </div>
+                                                <input type="text" id="nombre" style="color:rgb(68,120,46)" class="alert-success form-control" name="fname-icon" placeholder="nombre cliente" />
+                                            </div>
+                                        </div>
+                                    </div>
+                   
+
+                                    <hr size="8px" style="border-color:black;" />
+
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <h6 class="text-center" style="color:rgb(0, 181, 26);height:3px"></h6>
+                                            <select id="departamento" class="select2 form-control form-control-lg">
+                                                <?php foreach ($this->departamento as $dp) { ?>
+                                                    <option value="<?php echo $dp['i_codigo']; ?>"><?php echo $dp['v_descripcion']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <h6 class="text-center" style="color:rgb(0, 181, 26);height:3px"></h6>
+                                            <div class="form-group">
+                                                <button id="asignar" type="button" style="height:40px" class="btn btn-relief-success bg-gradient-success waves-effect waves-float waves-light btn-block btn-sm" type="button"> <i data-feather='save'></i> <strong>Asignar</strong> </button>
+                                            </div>
+                                        </div>
+
+                                        <div id="div-00"></div>
+
+                                    </div>
+
+
+                                    <table id="example1" class="table table-bordered">
+                                        <thead class="thead-dark">
+                                            <tr class="text-center">
+                                                <th>ID</th>
+                                                <th>ZONAVENTA</th>
+                                                <th>DIA SEMANA</th>
+                                                <th>ZONA DE RUTA</th>
+                                                <th>GRP.DESPACHO</th>
+                                                <th>DEPARTAMENTO</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php if (isset($this->ListadoSemanaRutaVendedor)) { ?>
+                                                <?php foreach ($this->ListadoSemanaRutaVendedor as $vn) { ?>
+                                                    <tr>
+                                                        <td class="text-center">
+                                                            <b> <?php echo $vn['i_id'] ?></b>
+                                                        </td>
+
+                                                        <td class="text-center">
+                                                            <b>ZONA VENTA - (<?php echo $vn['ZonaVentaID'] ?>)</b>
+                                                        </td>
+                                                        <td class="text-left">
+                                                            <div class="media">
+                                                                <div class="avatar bg-light-info mr-0">
+                                                                    <div class="avatar-content">
+                                                                        <i data-feather="calendar" stroke-width="3" class="avatar-icon"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="media-body my-auto">
+                                                                    <h6 class="font-weight-bolder mb-0"><?php echo $vn['v_nombre_dia'] ?></h6>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
+                                                        <td class="text-center">
+                                                            <b> <span class="badge bg-<?php echo $vn['ColorEstado'] ?>"><?php echo $vn['ZonaRutaID'] ?></span></b>
+                                                        </td>
+
+                                                        <td class="text-center">
+                                                            <b> <?php echo $vn['GrupoDespacho'] ?></b>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <b> <?php echo $vn['departamento'] ?></b>
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+   
