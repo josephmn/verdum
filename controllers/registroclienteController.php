@@ -1251,4 +1251,6 @@ class registroclienteController extends Controller
 			$this->redireccionar('index/logout');
 		}
 	}
+
+ 
 }
