@@ -37,18 +37,18 @@ $(function () {
           previous: "Anterior",
         },
       },
-      dom: "Bfrtip",
+      // dom: "Bfrtip",
       columnDefs: [{ visible: false, targets: 4 }],
       order: [[groupColumn, "asc"]],
-      buttons: [
-        "excel",
-        // "pdf", 
-        "print",
-        {
-          extend: 'pdfHtml5',
-          orientation: 'landscape',
-          pageSize: 'LEGAL'
-        }],
+      // buttons: [
+      //   "excel",
+      //   // "pdf", 
+      //   "print",
+      //   {
+      //     extend: 'pdfHtml5',
+      //     orientation: 'landscape',
+      //     pageSize: 'LEGAL'
+      //   }],
       displayLength: 25,
 
 

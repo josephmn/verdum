@@ -15,7 +15,6 @@
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo BASE_URL ?>public/dist/img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
 
-
     <!-- BEGIN: Vendor CSS-->
     <?php if (isset($_layoutParams['cssSp']) && count($_layoutParams['cssSp'])) : ?>
         <?php foreach ($_layoutParams['cssSp'] as $layoutcssSp) : ?>
@@ -23,6 +22,15 @@
         <?php endforeach; ?>
     <?php endif; ?>
     <!-- END: Page CSS-->
+
+    <style>
+        body {
+            background-image: url("<?php echo BASE_URL ?>public/dist/img/Productosverdum.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+    </style>
+
 
 </head>
 <!-- END: Head-->
@@ -82,7 +90,6 @@
 
                                 <h4 class="card-title mb-1">Iniciar sesión...</h4>
                                 <!-- <p class="card-text mb-2">Por favor inicie sesión, sino crear una nueva cuenta.</p> -->
-
                                 <form role="form">
                                     <div class="form-group">
                                         <label for="correo" class="form-label font-weight-bolder">Usuario</label>
@@ -105,13 +112,10 @@
                                     </div>
                                 </form>
 
+                                <div id="div-login"></div>
+
                                 <p class="text-center mt-2">
-                                    <span>Eres usuario nuevo?</span>
-                                    <!-- <a href="page-auth-register-v1.html"> -->
-                                    <a href="<?php echo BASE_URL ?>index/registro"><span>Crear una cuenta</span></a>
-                                    <br>
                                     <span>Olvidastes tu clave?</span>
-                                    <!-- <a href="page-auth-register-v1.html"> -->
                                     <a href="<?php echo BASE_URL ?>index/recuperarclave"><span>Recuperar mi
                                             contraseña</span></a>
                                 </p>

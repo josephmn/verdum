@@ -11,7 +11,7 @@ class canalclienteController extends Controller
 	public function index()
 	{
 		if (isset($_SESSION['usuario'])) {
-
+			$this->_view->conctructor_menu('supervisorventas', 'canalcliente');
 			$this->_view->setCss_Specific(
 				array(
 					'dist/css/fontawesome/css/all',

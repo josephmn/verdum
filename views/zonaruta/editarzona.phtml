@@ -3,32 +3,29 @@
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-            <!-- <div class="content-header row">
-                <div class="content-header-left col-md-9 col-12 mb-2">
-                    <div class="row breadcrumbs-top">
-                        <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">
-                                <b><?php foreach ($_SESSION['submenus'] as $menu) { ?>
-                                        <?php if ($this->_controlador == $menu['v_link']) {
-                                            echo $menu['v_descripcion'];
-                                        } else {
-                                            '';
-                                        } ?>
-                                    <?php } ?>
-                                </b>
-                            </h2>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
 
             <div class="content-body">
                 <section id="basic-horizontal-layouts">
                     <div class="row">
                         <div class="col-md-12 col-12">
+
+
                             <div class="card">
-                                <div class="card-header bg-gradient-success" style="height:50px;">
-                                    <h4 class="alert-heading" style="color:#133337"><i class="fas fa-user-edit"></i> EDITAR ZONA DE RUTA</h4>
+
+
+                                <div class="card-header border-bottom p-1">
+                                    <div class="head-label">
+                                        <h6 class="mb-0"></h6>
+                                    </div>
+                                    <div class="dt-action-buttons text-right">
+                                        <div class="dt-buttons d-inline-flex">
+                                            <button id="btnagregar" type="button" class="dt-button create-new btn btn-primary"><i class="fa-solid fa-user-plus fa-beat"></i>&nbsp; NUEVO USUARIO </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-header">
+                                    <h4 class="card-title"> <i class="fa-solid fa-list"></i></i> <strong>EDITAR ZONA DE RUTA</strong> </h4>
                                 </div>
 
                                 <div class="card-body">
@@ -39,7 +36,7 @@
 
                                     <div class="row">
                                         <div class="form-group col-md-6">
-                                            <label class="form-label font-weight-bolder">Codigo vendedor</label>
+                                            <label class="form-label font-weight-bolder"><strong>Codigo vendedor</strong> </label>
                                             <div class="input-group input-group-merge">
                                                 <div class=" input-group-prepend">
                                                     <span class="input-group-text"><i data-feather="user"></i></span>
@@ -48,7 +45,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label class="form-label font-weight-bolder">Nombre vendedor</label>
+                                            <label class="form-label font-weight-bolder"><strong>Nombre vendedor</strong> </label>
                                             <div class="input-group input-group-merge">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i data-feather="user"></i></span>
@@ -59,13 +56,12 @@
                                     </div>
 
 
-                                    <!-- <hr size="8px" style="border-color:black;" /> -->
 
 
-                                    <div class="row">
+
+                                    <!-- <div class="row">
                                         <div class="col-md-8">
                                             <label class="form-label font-weight-bolder"><strong>Asignar rutas a nuevo vendedor</strong></label>
-                                            <!-- <h6 class="text-center"style="color:rgb(0, 181, 26);height:3px">Asignar rutas a nuevo vendedor</h6> -->
                                             <select id="jefeventa" class="select2 form-control form-control-lg">
                                                 <?php foreach ($this->listavendedor as $vn) { ?>
                                                     <option <?php echo $vn['v_default']; ?> value="<?php echo $vn['i_id']; ?>"><?php echo $vn['v_nombre']; ?></option>
@@ -75,34 +71,33 @@
 
                                         <div class="col-md-4">
                                             <label class="form-label font-weight-bolder"></label>
-                                            <!-- <h6 class="text-center" style="color:rgb(0, 181, 26);height:3px"></h6> -->
                                             <div class="form-group">
                                                 <button id="asignar" type="button" style="height:40px" class="btn btn-relief-danger bg-gradient-danger waves-effect waves-float waves-light btn-block btn-sm" type="button"> <i data-feather='save'></i> <strong>Asignar</strong> </button>
                                             </div>
                                         </div>
                                         <div id="div-00"></div>
 
-                                    </div>
+                                    </div> -->
 
 
-                                    <table id="example1" class="table table-bordered">
+                                    <table id="example1" class="table table-sm">
                                         <thead class="thead-dark">
                                             <tr class="text-center">
-                                                <th>ID</th>
-                                                <th>IDZONA</th>
-                                                <th>DESCRIPCION</th>
-                                                <th><i data-feather='calendar'></i>&nbsp;LUNES</th>
-                                                <th><i data-feather='calendar'></i>&nbsp;MARTES</th>
-                                                <th><i data-feather='calendar'></i>&nbsp;MIERCOLES</th>
-                                                <th><i data-feather='calendar'></i>&nbsp;JUEVES</th>
-                                                <th><i data-feather='calendar'></i>&nbsp;VIERNES</th>
-                                                <th><i data-feather='calendar'></i>&nbsp;SABADO</th>
-                                                <th><i data-feather='calendar'></i>&nbsp;DOMINGO</th>
-                                                <th>GRP.DESPACHO</th>
-                                                <th>DEPARTAMENTO</th>
-                                                <th>CLIENTES</th>
-                                                <th><i data-feather='navigation'> </i>TRANSFERIR</th>
-                                                <th>ZONAVENTA</th>
+                                                <th>#id</th>
+                                                <th>IdZona</th>
+                                                <th>Descripcion</th>
+                                                <th><i data-feather='calendar'></i>&nbsp;Lunes</th>
+                                                <th><i data-feather='calendar'></i>&nbsp;Martes</th>
+                                                <th><i data-feather='calendar'></i>&nbsp;Miercoles</th>
+                                                <th><i data-feather='calendar'></i>&nbsp;Jueves</th>
+                                                <th><i data-feather='calendar'></i>&nbsp;Viernes</th>
+                                                <th><i data-feather='calendar'></i>&nbsp;Sabado</th>
+                                                <th><i data-feather='calendar'></i>&nbsp;Domingo</th>
+                                                <th>Grp.Despacho</th>
+                                                <th>Departamento</th>
+                                                <th>Clientes</th>
+                                                <th><i data-feather='navigation'> </i> Trasnferir</th>
+                                                <th>ZonaVenta</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -125,9 +120,10 @@
                                                             </div>
                                                         </td>
 
-                                                        <td class="text-left">
+                                                        <td class="text-center">
                                                             <b> <span class="badge bg-<?php echo $vn['ColorEstado'] ?>"><?php echo $vn['ZonaRutaID'] ?></span></b>
                                                         </td>
+
                                                         <td class="text-center">
                                                             <b> <?php echo $vn['Lunes'] ?></b>
                                                         </td>
@@ -158,13 +154,9 @@
 
                                                         <td class='text-center'>
                                                             <a id='<?php echo $vn['ZonaVentaID'] ?>' <?php $variable1 =  $vn['ZonaVentaID'] ?> href="<?php echo BASE_URL ?><?php echo $vn['v_url2'] ?>=<?php echo urlencode($variable1); ?>" class="btn btn-<?php echo $vn['v_btn2'] ?>"><i class="fas fa-<?php echo $vn['v_btn2Imagen'] ?>"></i></a>
-                                                            <span class="badge bg-<?php echo $vn['v_btn2Color'] ?>"><?php echo $vn['v_btn2Nombre'] ?></span>
                                                         </td>
 
-                                                        <td class='text-center'>
-                                                            <a id='<?php echo $vn['ZonaVentaID'] ?>' <?php $variable1 =  $vn['ZonaVentaID'] ?> href="<?php echo BASE_URL ?><?php echo $vn['v_url'] ?>=<?php echo urlencode($variable1); ?>" class="btn btn-<?php echo $vn['v_btn1'] ?>"><i class="fas fa-<?php echo $vn['v_btn1Imagen'] ?>"></i></a>
-                                                            <span class="badge bg-<?php echo $vn['v_btn1Color'] ?>"><?php echo $vn['v_btn1Nombre'] ?></span>
-                                                        </td>
+                                                        <td class="text-center"><a id='<?php echo $vn['v_nombre_dia'] ?>' class="btn btn-primary btn-sm text-white revisar"><span class="fa-solid fa-edit fa-beat"><b></b></span></a></td>
 
                                                         <td class="text-center">
                                                             <b>ZONA VENTA - (<?php echo $vn['ZonaVentaID'] ?>)</b>
@@ -183,3 +175,115 @@
         </div>
     </div>
     <!-- END: Content-->
+
+
+
+    <div class="modal fade text-left" id="modal-cambio" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel160" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-gradient-success">
+                    <h5 style="color:rgb(255,255,255)" class="modal-title"><i class="fa-solid fa-square-check"></i> ASIGNAR A NUEVO VENDEDOR </h5>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label style="color:rgb(255,165,0)" class="form-label font-weight-bolder">Vendedor Actual</label>
+                            <div class="input-group input-group-merge">
+                                <div class=" input-group-prepend">
+                                    <span class="input-group-text"><i data-feather='user'></i></span>
+                                </div>
+                                <input type="text" id="xvendedoractual" style="text-transform:uppercase" autocomplete="of" class="form-control" placeholder="" readonly="readonly">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label style="color:rgb(255,165,0)" class="form-label font-weight-bolder">Zona de Ruta</label>
+                            <div class="input-group input-group-merge">
+                                <div class=" input-group-prepend">
+                                    <span class="input-group-text"><i data-feather='user'></i></span>
+                                </div>
+                                <input type="text" id="xzonaruta" style="text-transform:uppercase" autocomplete="of" class="form-control" placeholder="" readonly="readonly">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label font-weight-bolder"><strong>Seleccione nuevo vendedor</strong></label>
+                            <select id="xjefeventa" class="select2 form-control form-control-lg">
+                                <?php foreach ($this->listavendedor as $vn) { ?>
+                                    <option <?php echo $vn['v_default']; ?> value="<?php echo $vn['i_id']; ?>"><?php echo $vn['v_nombre']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <div class="custom-control custom-switch custom-switch-primary">
+
+                                <label class="form-label font-weight-bolder"><strong>Activar para incluir ventas</strong></label>
+                                <input type="checkbox" class="custom-control-input" id="customSwitch10" />
+                                <label class="custom-control-label" for="customSwitch10">
+                                    <span class="switch-icon-left"><i data-feather="check"></i></span>
+                                    <span class="switch-icon-right"><i data-feather="x"></i></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="form-label font-weight-bolder"><strong>Periodo Afecto para Venta</strong></label>
+                            <select id="xperiodo" class="form-control mb-1">
+                                <?php foreach ($this->ListadoPeriodo as $st) { ?>
+                                    <option value="<?php echo $st['i_id']; ?>"><?php echo $st['v_perpost']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button id="btnguardar" type="button" class="btn btn-success btn-block waves-effect waves-float waves-light"><b>Guardar</b></button>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="col-sm-6">
+                                <button id="btncancelar" type="button" class="btn btn-danger btn-block waves-effect waves-float waves-light"><b>Cancelar</b></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL PARA PROCESOS -->
+    <div class="modal fade" id="modal-insert" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-warning" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-warning"><strong> <i class="fa-solid fa-spinner fa-spin-pulse"></i>&nbsp; PROCESANDO...</strong></h5>
+                </div>
+
+                <div class="modal-body">
+                    <p>
+                        <strong>Se estan procesando los datos</strong>
+                    </p>
+                    <p>
+                        <strong>Tiempo transcurrido: <b id="number"></b> segundos</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>

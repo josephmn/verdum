@@ -11,6 +11,7 @@ class registrovendedorController extends Controller
 	{
 		if (isset($_SESSION['usuario'])) {
 
+			$this->_view->conctructor_menu('ventas', 'registrovendedor');
 			$this->_view->setCss_Specific(
 				array(
 					'dist/css/fontawesome/css/all',

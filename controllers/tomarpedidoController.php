@@ -10,6 +10,7 @@ class tomarpedidoController extends Controller
 	public function index()
 	{
 		if (isset($_SESSION['usuario'])) {
+			$this->_view->conctructor_menu('ventas', 'tomarpedido');
 
 			$this->_view->setCss_Specific(
 				array(

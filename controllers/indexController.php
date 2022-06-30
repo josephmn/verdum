@@ -12,6 +12,7 @@ class indexController extends Controller
 	{
 		$this->_view->setCss_Specific(
 			array(
+				'dist/css/fontawesome/css/all',
 				'plugins/vendors/css/extensions/sweetalert2.min',
 				'dist/css/bootstrap',
 				'dist/css/colors',
@@ -288,6 +289,50 @@ class indexController extends Controller
 
 			$result2 = $soap->SubMenu($param2);
 			$submenu = json_decode($result2->SubMenuResult, true);
+
+
+			$filasmenu = "";
+			$filassub = "";
+			$menu1 = "dashboard";
+			$submenu1 = "";
+			$active = "";
+
+			foreach ($menu as $m) {
+				foreach ($submenu as $sm) {
+					$active = $sm['v_link'] == $submenu1 ? " active" : "";
+					if ($sm['i_idmenu'] == $m['i_id']) {
+						$filassub .= "
+						<ul class='nav-treeview'>
+							<li class='nav-item " . $active . "'>
+								<a href='" . BASE_URL . $sm['v_link'] . "/index' class='" . $sm['v_link'] . " nav-link'>
+									<i data-feather='" . $sm['v_icono'] . "'></i>
+									<span>" . $sm['v_nombre'] . "</span>
+									" . $sm['v_span'] . "
+								</a>
+							</li>
+						</ul>";
+					}
+					$active = "";
+				}
+				// menu-open
+				$activem = $menu1 == $m['v_link'] && $m['i_submenu'] != 1 ? 'active ' : "";
+
+				$filasmenu .= "
+					<li class='" . $activem . "nav-item'>
+						<a href=" . BASE_URL . $m['v_link'] . " class='" . $m['v_link'] . " nav-link'>
+							<i data-feather='" . $m['v_icono'] . "'></i>
+							<span class='menu-title text-truncate'>" . str_replace("&otilde;", "ó", $m['v_nombre']) . "</span>
+						</a>
+						" . $filassub . "
+					</li>";
+				$filassub = "";
+			}
+
+			$_SESSION['menuinicial'] = $filasmenu;
+
+
+
+			
 
 			$estado = 1; // logueo exitoso
 			$url = "/verdum/" . $menu[0]['v_link'] . "/index";

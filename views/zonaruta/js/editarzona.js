@@ -8,13 +8,7 @@ $(function () {
   var variable3 = urlParams.get('variable3');
   var ImporteTotal = 0;
 
-  // function myFunc() {
-  //   var now = new Date();
-  //   var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
-  //   document.getElementById('hora').innerHTML = time;
-  // }
-  // myFunc();
-  // setInterval(myFunc, 1000);
+
 
   $(document).ready(function () {
     var groupColumn = 14;
@@ -97,9 +91,6 @@ $(function () {
     }
     var codvend = $('#codvend').val();
 
-
-
-
     $.ajax({
       type: 'POST',
       url: '/verdum/crearzonaruta/guardar_zonaruta_vendedor',
@@ -157,6 +148,117 @@ $(function () {
 
 
   });
+
+
+
+  $("#xjefeventa").change(function () {
+    var xjefeventa = $("#xjefeventa").val();
+
+
+  });
+
+
+
+
+  $("#example1 tbody").on("click", "a.revisar", function () {
+    var idruta = $(this).attr("id");
+    $('#xvendedoractual').val(variable1);
+    $('#xzonaruta').val(idruta);
+
+    $("#modal-cambio").modal("show");
+  });
+
+
+  $("#btnguardar").on("click", function () { //aqui ppto
+    var post = 0;
+    var codvendant = variable1;
+    var codvendnew = $("#xjefeventa").val();
+    var v_idzonaruta = $("#xzonaruta").val();
+    var i_venta = document.getElementById("customSwitch10").checked;
+    // var periodo = $("#xperiodo").val();
+    var periodo = $('#xperiodo option:selected').text();
+
+    var i_venta = Number(i_venta);
+
+
+    if (codvendnew == variable1) {
+      Swal.fire({
+        title: "VENDEDOR NUEVO DEBE SER DIFERENTE AL ACTUAL",
+        timer: 3000,
+        timerProgressBar: true,
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
+      return
+    }
+
+    Swal.fire({
+      title: "Seguro de Guardar?",
+      text: "Se procesara el cambio en el Sistema",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#61C250",
+      cancelButtonColor: "#ea5455",
+      confirmButtonText: "Si, Guardar!",
+      cancelButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+          type: 'POST',
+          url: '/verdum/zonaruta/registro_cambioruta',
+          data: {
+            post: post,
+            codvendant: codvendant,
+            codvendnew: codvendnew,
+            v_idzonaruta: v_idzonaruta,
+            i_venta: i_venta,
+            periodo: periodo,
+          },
+
+          beforeSend: function () {
+            $("#modal-insert").modal("show");
+            var n = 0;
+            var l = document.getElementById("number");
+            window.setInterval(function () {
+              l.innerHTML = n;
+              n++;
+            }, 2000);
+          },
+
+          success: function (res) {
+            $("#modal-insert").modal("hide");
+            Swal.fire({
+              icon: res.vicon,
+              title: res.vtitle,
+              text: res.vtext,
+              timer: res.itimer,
+              timerProgressBar: res.vprogressbar,
+              showCancelButton: false,
+              showConfirmButton: false,
+            });
+            var id = setInterval(function () {
+              location.reload();
+              clearInterval(id);
+            }, res.itimer);
+          }
+        });
+      }
+    });
+
+
+
+  });
+
+
+
+  $("#btncancelar").on("click", function () { //aqui ppto
+    $("#modal-cambio").modal('hide');
+  });
+
 
 });
 

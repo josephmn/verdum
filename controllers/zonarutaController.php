@@ -10,7 +10,7 @@ class zonarutaController extends Controller
 	public function index()
 	{
 		if (isset($_SESSION['usuario'])) {
-
+			$this->_view->conctructor_menu('supervisorventas', 'zonaruta');
 			$this->_view->setCss_Specific(
 				array(
 					'dist/css/fontawesome/css/all',
@@ -35,6 +35,7 @@ class zonarutaController extends Controller
 					'plugins/vendors/css/pickers/flatpickr/flatpickr.min',
 					'plugins/vendors/css/pickers/form-flat-pickr',
 					'plugins/vendors/css/pickers/form-pickadate',
+					'plugins/vendors/css/animate/animate.min',
 
 				)
 			);
@@ -80,20 +81,6 @@ class zonarutaController extends Controller
 					'plugins/vendors/js/tables/datatable/buttons.print.min',
 					'plugins/vendors/js/tables/datatable/dataTables.rowGroup.min',
 					'plugins/vendors/js/pickers/flatpickr/flatpickr.min'
-					// 'dist/js/scripts/tables/table-datatables-basic', 					 
-
-
-					// 'plugins/datatables-net/js/pdfmake.min',
-					// 'plugins/vendors/js/tables/datatable/jszip.min',
-					// 'plugins/vendors/js/tables/datatable/datatables.checkboxes.min',
-					// 'plugins/vendors/js/tables/datatable/datatables.buttons.min',
-					// 'plugins/vendors/js/tables/datatable/buttons.print.min',
-					// 'plugins/vendors/js/pickers/flatpickr/flatpickr.min',
-					// 'plugins/vendors/js/tables/datatable/dataTables.rowGroup.min',
-					// 'dist/js/scripts/tables/table-datatables-basic'
-
-
-
 				)
 			);
 
@@ -175,6 +162,7 @@ class zonarutaController extends Controller
 					'plugins/vendors/css/extensions/ext-component-sweet-alerts',
 					'plugins/datatables-net/css/jquery.dataTables.min',
 					'plugins/datatables-net/css/responsive.dataTables.min',
+					'plugins/vendors/css/animate/animate.min',
 				)
 			);
 
@@ -264,6 +252,7 @@ class zonarutaController extends Controller
 					'plugins/vendors/css/extensions/ext-component-sweet-alerts',
 					'plugins/datatables-net/css/jquery.dataTables.min',
 					'plugins/datatables-net/css/responsive.dataTables.min',
+					'plugins/vendors/css/animate/animate.min',
 				)
 			);
 
@@ -311,7 +300,7 @@ class zonarutaController extends Controller
 				'v_username' =>	$v_username,
 			);
 			$vendedor = array(
-				"post" => 1,
+				"post" => 3,
 				"i_id" => 0,
 			);
 
@@ -325,13 +314,83 @@ class zonarutaController extends Controller
 
 			$result = $soap->Departamento($depa);
 			$departamento = json_decode($result->DepartamentoResult, true);
-			
+
+
+			$result = $soap->ListadoPeriodo();
+			$ListadoPeriodo = json_decode($result->ListadoPeriodoResult, true);
+
+
 			$this->_view->listavendedor = $listavendedor;
 			$this->_view->ListadoSemanaRutaVendedor = $ListadoSemanaRutaVendedor;
 			$this->_view->departamento  = $departamento;
+			$this->_view->ListadoPeriodo  = $ListadoPeriodo;
 
 			$this->_view->setJs(array('editarzona'));
 			$this->_view->renderizar('editarzona');
+		} else {
+			$this->redireccionar('index/logout');
+		}
+	}
+
+
+
+	public function registro_cambioruta() //1
+	{
+		if (isset($_SESSION['usuario'])) {
+
+			putenv("NLS_LANG=SPANISH_SPAIN.AL32UTF8");
+			putenv("NLS_CHARACTERSET=AL32UTF8");
+
+			$this->getLibrary('json_php/JSON');
+			$json = new Services_JSON();
+
+			$post = $_POST['post'];
+			$codvendant = $_POST['codvendant'];
+			$codvendnew = $_POST['codvendnew'];
+			$v_idzonaruta = $_POST['v_idzonaruta'];
+			$i_venta = $_POST['i_venta'];
+			$periodo = $_POST['periodo'];
+
+
+			$wsdl = 'http://localhost:81/VMWEB/WSVerdumweb.asmx?WSDL';
+
+			$options = array(
+				"uri" => $wsdl,
+				"style" => SOAP_RPC,
+				"use" => SOAP_ENCODED,
+				"soap_version" => SOAP_1_1,
+				"connection_timeout" => 60,
+				"trace" => false,
+				"encoding" => "UTF-8",
+				"exceptions" => false,
+			);
+
+			$soap = new SoapClient($wsdl, $options);
+			$params = array(
+				'post' => $post,
+				'codvendant' => $codvendant,
+				'codvendnew' => $codvendnew,
+				'v_idzonaruta' => $v_idzonaruta,
+				'i_venta' =>  $i_venta,
+				'periodo' =>  $periodo,
+
+			);
+
+			$result2 = $soap->GuardarCambioZonaRuta($params);
+			$GuardarCambioZonaRuta = json_decode($result2->GuardarCambioZonaRutaResult, true);
+
+			header('Content-type: application/json; charset=utf-8');
+
+			echo $json->encode(
+				array(
+					"vicon" 		=> $GuardarCambioZonaRuta[0]['v_icon'],
+					"vtitle" 		=> $GuardarCambioZonaRuta[0]['v_title'],
+					"vtext" 		=> $GuardarCambioZonaRuta[0]['v_text'],
+					"itimer" 		=> intval($GuardarCambioZonaRuta[0]['i_timer']),
+					"icase" 		=> intval($GuardarCambioZonaRuta[0]['i_case']),
+					"vprogressbar" 	=> $GuardarCambioZonaRuta[0]['v_progressbar'],
+				)
+			);
 		} else {
 			$this->redireccionar('index/logout');
 		}

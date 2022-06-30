@@ -3,55 +3,38 @@
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-            <!-- <div class="content-header row">
-                <div class="content-header-left col-md-9 col-12 mb-2">
-                    <div class="row breadcrumbs-top">
-                        <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">
-                                <b><?php foreach ($_SESSION['submenus'] as $menu) { ?>
-                                        <?php if ($this->_controlador == $menu['v_link']) {
-                                            echo $menu['v_descripcion'];
-                                        } else {
-                                            '';
-                                        } ?>
-                                    <?php } ?>
-                                </b>
-                            </h2>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
 
             <div class="content-body" style="color:rgb(248, 248, 248);">
                 <section id="basic-horizontal-layouts" style="color:rgb(248, 248, 248);">
                     <div class="row">
                         <div class="col-md-12 col-12" style="color:rgb(248, 248, 248);">
                             <div class="card bg-light-secondary text-white">
-
-                                <div class="card-header bg-gradient-success" style="height:50px">
-                                    <h4 class="alert-heading" style="color:#133337"><i class="fas fa-cogs"></i> <strong>GESTION DE ZONA/RUTA</strong> </h4>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-md-12">
-                                    </div>
-                                </div>
-
                                 <input type="hidden" id="hora">
-
                                 <div class="card col-12">
-                                    <div class="card-header">
-                                        <h4 class="card-title">Asignacion de Ruta</h4>
-                                        <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i>
+                                    <div class="card-header border-bottom p-1">
+                                        <div class="head-label">
+                                            <h6 class="mb-0"></h6>
+                                        </div>
+                                        <div class="dt-action-buttons text-right">
+                                            <div class="dt-buttons d-inline-flex">
+                                                <button id="btnagregar" type="button" class="dt-button create-new btn btn-primary"><i class="fa-solid fa-user-plus fa-beat"></i>&nbsp; NUEVO USUARIO </button>
+                                            </div>
+                                        </div>
                                     </div>
+
+                                    <div class="card-header">
+                                        <h4 class="card-title"> <i class="fa-solid fa-list"></i></i> <strong>Administracion de Zonas de Ruta</strong> </h4>
+                                    </div>
+
                                     <div class="card-body">
                                         <div class="col-xs-12 col-sm-12 col-12">
-                                            <table id="example1" class="table table-bordered">
+                                            <table id="example1" class="table table-sm">
                                                 <thead class="thead-dark">
                                                     <tr class="text-center">
                                                         <th>VENDEDOR</th>
                                                         <th>LOCAL</th>
                                                         <th>ZONA VENTA</th>
-                                                        <th>ACCION</th>
+                                                        <th>REVISAR</th>
                                                         <th>SUPERVISOR VENDEDORES</th>
                                                     </tr>
                                                 </thead>
@@ -80,8 +63,7 @@
                                                                     <b> <?php echo $vn['v_zonaventa'] ?></b>
                                                                 </td>
                                                                 <td class='text-center'>
-                                                                    <a id='<?php echo $vn['v_codvend'] ?>' <?php $variable1 =  $vn['v_codvend'] ?> <?php $variable2 =  $vn['v_name'] ?><?php $variable3 =  $vn['v_zonaventa'] ?> href="<?php echo BASE_URL ?><?php echo $vn['v_url'] ?>=<?php echo urlencode($variable1); ?>&variable2=<?php echo utf8_decode(urlencode($variable2)); ?>&variable3=<?php echo utf8_decode(urlencode($variable3)); ?>" class="btn btn-<?php echo $vn['v_btn1'] ?>"><i class="fas fa-<?php echo $vn['v_btn1Imagen'] ?>"></i></a>
-                                                                    <span class="badge bg-<?php echo $vn['v_btn1Color'] ?>"><?php echo $vn['v_btn1Nombre'] ?></span>
+                                                                    <a id='<?php echo $vn['v_codvend'] ?>' <?php $variable1 =  $vn['v_codvend'] ?> <?php $variable2 =  $vn['v_name'] ?><?php $variable3 =  $vn['v_zonaventa'] ?> href="<?php echo BASE_URL ?><?php echo $vn['v_url'] ?>=<?php echo urlencode($variable1); ?>&variable2=<?php echo utf8_decode(urlencode($variable2)); ?>&variable3=<?php echo utf8_decode(urlencode($variable3)); ?>" class="btn btn-<?php echo $vn['v_btn1'] ?>"><i class="fas fa-<?php echo $vn['v_btn1Imagen'] ?>"></i></a>                                            
                                                                 </td>
                                                                 <td class="text-left"><b> <?php echo $vn['v_codsup'] ?> - <?php echo $vn['v_namesup'] ?> </b> </td>
                                                             </tr>
@@ -101,7 +83,7 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="col-xs-12 col-sm-12 col-12">
-                                            <table id="example2" class="table table-bordered">
+                                            <table id="example2" class="table table-sm">
                                                 <thead class="thead-dark">
                                                     <tr class="text-center">
                                                         <th>SUPERVISOR</th>

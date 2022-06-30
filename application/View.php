@@ -121,5 +121,107 @@ class View
 			throw new Exception('Error de css');
 		}
 	}
+
+		// menu
+		public function conctructor_menu($menu, $submenu)
+		{
+	
+			$filasmenu = "";
+			$filassub = "";
+			$menu1 = $menu;
+			$submenu1 = $submenu;
+			$active = "";
+	
+			foreach	($_SESSION['menus'] as $m) {
+				foreach ($_SESSION['submenus'] as $sm) {
+					$active = $sm['v_link'] == $submenu1 ? " active" : "";
+					if ($sm['i_idmenu'] == $m['i_id']) {
+						$filassub .= "
+						<ul class='nav-treeview'>
+							<li class='nav-item " . $active . "'>
+								<a href='" . BASE_URL . $sm['v_link'] . "/index' class='" . $sm['v_link'] . " nav-link'>
+									<i data-feather='" . $sm['v_icono'] . "'></i>
+									<span>" . $sm['v_nombre'] . "</span>
+									" . $sm['v_span'] . "
+								</a>
+							</li>
+						</ul>";
+					}
+					$active = "";
+				}
+				
+				// menu-open
+				$activem = $menu1 == $m['v_link'] && $m['i_submenu'] != 1 ? 'active ' : "";
+	
+				$filasmenu .= "
+				<li class='" . $activem . "nav-item'>
+					<a href=" . BASE_URL . $m['v_link'] . " class='" . $m['v_link'] . " nav-link'>
+						<i data-feather='" . $m['v_icono'] . "'></i>
+						<span class='menu-title text-truncate'>" . str_replace("&otilde;", "ó", $m['v_nombre']) . "</span>
+					</a>
+					" . $filassub . "
+				</li>";
+			$filassub = "";
+			}
+	
+			$_SESSION['menuinicial'] = $filasmenu;
+	
+			// $filasmenu = "";
+			// $filassub = "";
+			// $menu1 = $menu;
+			// $submenu1 = $submenu;
+			// $active = "";
+	
+	
+			// foreach ($_SESSION['menus'] as $m) {
+	
+			// 	if (($m['v_link'] == $menu1) && ($m['i_submenu'] == 0) && ($submenu1 == "")) {
+			// 		$active = " active";
+			// 	} else {
+			// 		$active = "";
+			// 	}
+	
+			// 	$flecha = $m['i_submenu'] == 1 ? " has-sub" : "";
+	
+			// 	foreach ($submenu1 as $sm) {
+			// 		$activesm = $sm['v_link'] == $submenu1 ? " active" : "";
+	
+			// 		if ($sm['i_idmenu'] == $m['i_id']) {
+			// 			$filassub .= "
+			// 			<ul class='nav-treeview'>
+			// 				<li class='nav-item " . $activesm . "'>
+			// 					<a href='" . BASE_URL . $sm['v_link'] . "/index' class='d-flex align-items-center nav-link" . $activesm . "'>
+			// 					<i data-feather=" . $sm['v_icono'] . "></i>
+			// 						<span>" . $sm['v_nombre'] . "</span>								 
+			// 					</a>
+			// 				</li>
+			// 			</ul>";
+			// 		}
+			// 		$activesm = "";
+			// 	}
+	
+			// 	// menu-open
+	
+	
+			// 	if (strval($m['v_link']) == strval($menu1) && intval($m['i_submenu']) == 1) {
+			// 		$mopen = " open";
+			// 	} else {
+			// 		$mopen = " ";
+			// 	}
+	
+	
+			// 	$filasmenu .= "
+			// 		<li class='" . $active  . " nav-item " . $flecha . $mopen . "' >
+			// 			<a class='nav-link d-flex align-items-center' href=" . BASE_URL . $m['v_link'] . ">
+			// 			<i data-feather=" . $m['v_icono'] . "></i>
+			// 			<span class='menu-title text-truncate'> " . str_replace("&otilde;", "ó", $m['v_nombre']) . "</span>
+			// 			</a>
+			// 			" . $filassub . "
+			// 		</li>";
+			// 	$filassub = "";
+			// }
+	
+			// $_SESSION['menuinicial'] = $filasmenu;
+		}
 }
 ?>

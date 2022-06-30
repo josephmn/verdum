@@ -1,4 +1,4 @@
-$(function () {});
+$(function () { });
 
 $("#btnlogin").on("click", function () {
   var correo = $("#correo").val();
@@ -6,13 +6,13 @@ $("#btnlogin").on("click", function () {
 
   if (correo == null || correo == "") {
     Swal.fire({
-      icon: "info",
+      icon: "warning",
       title: "No ha ingresado su correo...",
       timer: 2000,
     });
   } else if (clave == null || clave == "") {
     Swal.fire({
-      icon: "info",
+      icon: "warning",
       title: "No ha ingresado su clave...",
       timer: 2000,
     });
@@ -21,11 +21,21 @@ $("#btnlogin").on("click", function () {
       type: "POST",
       url: "/verdum/index/login",
       data: { correo: correo, clave: clave },
+
+      beforeSend: function () {
+        $("#div-login").html("");
+        $("#div-login").append(
+          "<div id='div-login'>\<div class='d-flex justify-content-center my-1'>\<div class='spinner-border text-danger' role='status' aria-hidden='true'></div>\</div>\ </div>"
+        );
+      },
+
       success: function (res) {
+        $("#div-login").html("");
+
         switch (res.estado) {
           case 0:
             Swal.fire({
-              icon: "info",
+              icon: "warning",
               title: "Usuario o contraseña incorrecta",
               // text: "Si no se acuerda su contraseña, favor de ir a recuperar mi contraseña..!!",
               text: "Debe ingresar los datos Correctos!!",

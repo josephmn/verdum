@@ -10,7 +10,7 @@ class evaluacionpersonaController extends Controller
 	public function index()
 	{
 		if (isset($_SESSION['usuario'])) {
-
+			$this->_view->conctructor_menu('evaluacionpersona', '');
 			$this->_view->setCss_Specific(
 				array(
 					'dist/css/fontawesome/css/all',
