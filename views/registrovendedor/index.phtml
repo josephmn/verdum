@@ -3,25 +3,6 @@
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-            <!-- <div class="content-header row">
-                <div class="content-header-left col-md-9 col-12 mb-2">
-                    <div class="row breadcrumbs-top">
-                        <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">
-                                <b><?php foreach ($_SESSION['submenus'] as $menu) { ?>
-                                        <?php if ($this->_controlador == $menu['v_link']) {
-                                            echo $menu['v_descripcion'];
-                                        } else {
-                                            '';
-                                        } ?>
-                                    <?php } ?>
-                                </b>
-                            </h2>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
             <div class="content-body">               
                 <section id="basic-horizontal-layouts">
                     <div class="row">
@@ -59,19 +40,10 @@
                     <div class="row">
                         <div class="col-md-12 col-12">
                             <div class="card">
-                                <!-- <div class="card-header">
-                                    <h4 class="card-title">Acciones</h4>
-                                </div> -->
                                 <div class="card-body">
                                     <div class="row">
-                                        <!-- <div class="col-md-12 col-12">
-                                            <div class="form-group">
-                                                <button id="btnagregar" type="button" class="btn btn-relief-primary"><i data-feather='users'></i><span>&nbsp;&nbsp;Agregar Nuevo</span></button>
-                                            </div>
-                                        </div> -->
-
                                         <div class="col-xs-12 col-sm-12 col-12">
-                                            <table id="tbvendedor" class="table table-bordered">
+                                            <table id="tbvendedor"  class="table table-sm">
                                                 <thead class="thead-dark">
                                                     <tr class="text-center">
                                                         <th>Nombre</th>
@@ -118,7 +90,6 @@
                                                                 <td class='text-center'>
                                                                     <a id='<?php echo $ac['v_codvend'] ?>' <?php $variable1 =  $ac['v_codvend'] ?> href="<?php echo BASE_URL ?><?php echo $ac['v_url'] ?>=<?php echo urlencode($variable1) ?>" class="btn btn-<?php echo $ac['v_btn1'] ?>"><i class="fas fa-<?php echo $ac['v_btn1Imagen'] ?>"></i></a>
                                                                 </td>
-
                                                             </tr>
                                                         <?php } ?>
                                                     <?php } ?>
